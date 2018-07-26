@@ -1,0 +1,201 @@
+1.核心函数
+1)each()
+2)size()
+3)length
+4)get()
+5)index()
+6)data()
+	data({'s':'x'})
+	data('s')
+
+2.选择器
+1.1基本
+1)#id
+2)tag
+3).class
+4)*
+
+2.层级
+a,b
+a b
+a>b
+a+b
+a~b
+
+3基本
+:first
+:last
+:not()	.center h1:not(h1:gt(1))
+:even	奇数
+:odd	偶数
+:eq()	第几个
+:gt()  	大于
+:lt()  	小于
+
+4.属性
+[attr]
+[attr=val]
+[attr!=val]
+[attr^=val]
+[attr$=val]
+[attr*=val]
+
+5.子元素	'.content>div>*:nth-child(5) h1:first-child'
+:first-child	可以命中
+:last-child
+:nth-child()		从1开始
+:only-child		
+
+6.表单属性
+:input
+:text
+:password
+:radio
+:checkbox
+:submit
+:reset
+:button
+:file
+:hidden
+
+7.表单属性
+:checked
+:selected
+
+8.筛选
+1)过滤
+eq()
+first()
+last()
+not()
+slice()	silce(startpos [,endpos])
+
+2)查找
+children()
+find()
+next()
+nextAll()
+parent()
+prev()
+prevAll()
+siblings()  //前后所有兄弟节点
+
+3)串联
+add('select')
+andself()	//附带自己
+
+
+9.属性:
+1)属性
+attr()
+removeAttr()
+2)css类
+addClass()
+removeClass()
+toggleClass()
+
+3)html代码 //含标签
+html()
+
+4)文本  //只有文本部分
+text()
+5)值 	//
+val()
+
+10.文档处理
+1)内部插入
+append()
+appendTo()
+prepend()
+prependTo()
+2)外部插入
+after()
+before()
+insertAfter()
+insertBefore()
+3)包裹
+wrap() 包裹对单个标签
+unwrap()
+wrapAll() 包裹所有
+wrapInner() 被包裹
+4)克隆
+clone()
+clone(true)
+5)删除
+remove('select') - 删除被选元素（及其子元素） select 为选中后 刻继续筛选的节点
+empty() - 从被选元素中删除子元素
+
+11.CSS操作
+1)css
+css();
+
+2)位置
+offset();	//绝对地址坐标
+	offset().left
+	offset().right
+position()
+	position()
+$(window).scrollTop()
+$(window).scollLeft()
+
+3)尺寸
+height()
+width()
+
+//包括padding
+innerWidth()
+innerHeight()
+
+//包括padding border
+outerWidth()
+outerHeight()
+
+12.事件
+1)文档载入完毕后  载入
+ready(fn)
+2)事件处理
+on()
+	on('envetTyple',fn) === bind()
+	$('listenArea').on('envetTyple',selector ,fn) === live()
+off()
+	off('envetTyple') === unbind()
+	$('listenArea').off('envetTyple',selector) === die()
+one()
+	
+3)事件委派
+live()
+die()
+4)事件切换
+hover()
+toggle()
+5)事件类型
+
+13.效果
+1)基本
+show(speed [,fn])
+hide(speed [,fn])
+toggle(speed [,fn])
+2)滑动
+slideDown(speed [,fn])
+slideUp(speed [,fn])
+slideToggle(speed [,fn])
+3)淡入淡出
+fadeIn(speed [,fn])
+fadeOut(speed [,fn])
+fadeToggle(speed [,fn])
+4)自定义
+animate({style} [,speed] [,fn])
+animate({'width':'0px'},600,function(){$(this).hide()})
+
+14.Ajax
+1)Ajax请求
+get(url,param,fn)
+post(url,,param,fn)
+2)Ajax工具
+serialize() 	序列化
+
+15.jquery实例
+1)表单验证
+2)城市级联
+3)拖拽图片
+4)轮播图

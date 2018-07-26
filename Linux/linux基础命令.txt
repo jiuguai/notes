@@ -1,0 +1,190 @@
+快捷操作
+ls -laR
+tab 命令补充
+history
+移动:上下首尾左右
+ctrl+ p/n/a/e/b/f
+删除:首尾左右
+ctrl+u/k/h/d
+清屏
+ctrl+l
+clear
+下载
+	sudo apt-get install
+目录
+	pwd>查看当前所处目录
+	. >当前目录
+	..>上级目录
+	- >前后操作的目录切换
+	$ >普通用户
+	# >超级用户 --root目录
+	~ >当前用户
+	
+linux 下的目录
+bin dev home lost+found mnt proc sbin srv tmp var
+boot etc lib media opt root selinux usr
+
+bin
+	常用命令
+		which 可以查外部的命令的位置
+sbin
+	管理用的一些命令
+etc
+	配置文件
+home
+	存用户信息的目录
+root
+	超级用户的目录
+
+
+opt
+	给主机额外摆放的安装目录，例如Oracle 的安装 
+user
+	用户安装应用程序的目录
+	usr/bin
+		系统用户的应用程序
+	usr/sbin
+		超级用户使用的比较高级的管理程序和守护程序
+	usr/src
+		内核源代码
+var
+	存放不断扩充的东西，习惯经常被修改的目录放在此目录下 
+	如：日志文件
+
+srv
+	存放一些服务启动后需要提取的数据
+tmp
+	临时文件
+	
+	
+mnt
+	手动挂载
+media
+	自动挂载
+lib
+	linux 存放的动态的连接库
+
+
+
+dev
+	设备文件
+proc
+	内存映射目录
+boot
+	开机启动项
+lost+found
+	文件碎片 非法关机时候存放的一些文件
+selinux 
+	redhat/centOS 所持有的目录 安全机制 类似防火墙
+sys
+	集成了 proc devfs devts 文件
+	内核设备树的直观反映
+
+
+文件和目录创建
+	mkdir 目录名
+	mkdir -p lover/lover/lover 
+	touch 文件  //没有就创建 有就更改时间
+删除文件和目录
+	rmdir lover/lover //非空 只能目录
+	rm -ri lover/lover// r 表示递归删除 i表示询问 可以操作文件和目录
+复制文件 // 文件存在会覆盖
+	cp 源文件名  目标文件名
+	cp -r 源文件目录  目标文件目录
+改名字
+	mv oldname  newname
+查看文件
+	cat
+	more //按一次回车显示一行  按空格每次翻一页 q退出
+	less //ctrl+p/n/b/f	q退出
+	head //默认显示前10行
+	tail //后10行
+	
+	
+	
+链接
+	软链接
+		ln -s  文件或文件夹名 链接名字
+	硬链接 //不可以操作目录
+		ln 文件或文件夹名 链接名字
+
+	
+修改文件权限
+	chmod [who] [+|-|=] [mode]
+		who:
+			文件所有者 	u
+			文件所属组	g
+			其他人	 	o
+			所有人		a //默认
+		+:添加权限
+		-:减少权限
+		=:覆盖原来的权限
+		mode
+			r:读	4
+			w:写	2
+			x:执行	1
+	chown 用户名[:用户组] 文件名
+	sudo  chgrp -R 用户组 文件名
+
+用户管理	/etc/passwd中记录了用户信息
+	添加用户
+		sudo adduser username(小写)
+		sudo useradd -s /bin/bash -g zero -d /home/zero  -m 用户名
+			-s -- 使用什么类型的命令解析器
+			-g -- 所属的组
+			-d -- 用户所在的目录
+			-m -- 如果目录不存在 就创建
+		sudo groupadd 组名
+		sudo passwd 用户名
+	删除用户
+		1
+			sudo deluser 用户名
+			rm 家目录
+		2	
+			sudo userdel -r 用户名
+		
+		usermod -a -G 组 用户名 //将用户加入某个组
+		usermod -g 组 用户名 //移动到某组
+		gpasswd -d user group //将用户从某组移出
+		
+		
+
+查找文件
+	文件属性查找
+		1.文件名
+			find  目录  -name  "文件名字"
+		2.文件大小
+			find  目录  -size  [+-]10k
+		3.文件类型
+			find  目录  -type  [f|d|l|b|c|s|p]
+		联合查询
+			find 目录 上述参数 参数类型 上述参数 参数类型
+	文件类容查找
+		grep -r "查找内容" 路径
+
+软件安装
+	在线安装
+		apt-get
+			sudo apt-get install tree
+			sudo apt-get remover tree
+			sudo apt-get update tree //更新软件列表
+			sudo apt-get clean
+				清空 /var/cache/apt/archives 下的下载文件
+		aptitude
+			sudo aptitude install tree
+			sudo aptitude reinstall tree
+			sudo aptitude remover tree
+			sudo aptitude show tree
+	deb安装包
+		sudo dpkg -i xxx.deb
+		sudo dpkg -r xxx
+	源码安装
+		1.解压源代码包
+		2.进入安装目录
+		3.检测文件是否缺失，创建Makefile,检测编译环境:./configure
+		4.编译源码，生成库和可执行文件：make
+		5.把库和可执行程序，安装到系统目录下 sudo make install
+		6.删除和卸载软件 sudo make distclean
+		7.上述安装步骤并不是绝对的，应该先查看附带的 README 文件
+	
+		

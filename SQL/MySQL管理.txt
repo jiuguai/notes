@@ -1,0 +1,66 @@
+1、MySQL运行状态监控
+	1)查看服务端运行状态
+		1.查看命令
+			show global status;
+			//以下网址可以查询
+			https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html
+		2.重要的状态
+			a.MySQL操作次数
+				Com_select(查询次数)
+				Com_update(修改次数)
+				Com_insert(插入次数)
+				Com_delete(删除次数)
+				Com_change_db(数据库修改次数)
+			b.统计
+				Connections 总连接次数
+				Connection_errors_max_connections 总计错误连接次数
+				Queries 总计SQL语句
+			c.并发连接数
+				max_connections 最大允许连接数
+				max_used_connections 当前最大连接数
+				Threads_connected 当前连接数
+				Threads_running 当前活跃连接数
+				Threads_cache 缓存中的连接数
+			d.流量统计
+				Bytes_received 收到的数据量
+				Bytes_sent	发出的数据量
+			e.缓存
+				have_query_cache 查看查询缓存可否用
+				query_cache_size 查询缓存大小
+			f.慢查询
+				long_query_time
+				
+				show global status like '%long_query_time%';
+				show variables like '%long_query_time%';
+		3.配置MySQL服务端
+			a.my.cnf 配置
+				[mysqld]
+				port=3306
+				table_cache=512 可以同时打开表的最大数量
+				max_connections=100 允许连接的最大客户端数量
+				query_cache_size=64M 查询结果缓存
+				read_buffer_size=2M  查询操作时候,单张表的缓存
+				key_buffer_sizer=380	指定索引缓冲大小，所有线程共享
+				default_table_type=Innodb 默认引擎
+	
+
+	
+2、MySQL 系统日志管理
+	1)配置数据库日志存储路径
+		2)日志路径配置
+		[mysqld]
+			log-error=/var/log/mysql/...
+			log-bin=
+			relay-log=
+			general_log=ON
+			general_log_file=
+			slow_query_log=ON
+			slow_query_log_file=
+				
+
+
+	
+3、MySQL 中的数据库管理
+	1)数据库备份和恢复
+	
+	2)Linux系统中的数据库定时备份

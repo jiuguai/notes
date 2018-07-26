@@ -1,0 +1,115 @@
+sudo apt-get install aptitude
+sudo apt-get install vsftpd
+sudo apt-get install lftp
+sudo apt-get install openssh-server
+sudo apt-get install nfs-kernel-server
+sudo apt-get install rar
+sudo apt-get install tree
+sudo apt-get install vim
+sudo aptitude show vim
+
+
+服务器搭建 -- vstpd
+	1.修改配置文件
+		/etc/vsftpd.conf
+		允许匿名登录
+			anonymous_enable=YES
+		实名登录允许写权限	
+			write_enable=YES
+		本地掩码为022
+			local_umask=022
+		允许匿名上传
+			anon_upload_enable=YES
+		允许匿名创建目录
+			anon_mkdir_write_enable=YES
+		手动添加 给匿名登录用户使用
+			手动添加 anon_root=目录
+		匿名账号:
+			anonymous
+			不指定的的情况(默认位置 /srv/ftp/子目录)
+	2.重启服务
+		sudo service vsftpd restart
+ftp 客服端	不能上传目录
+	1.实名登录
+		ftp IP
+	2.上传文件 （上传和下载的文件位置来源于你登录的位置）
+		put 上传文件 
+		get 下载文件 
+		不允许操作直接操作目录  如果想操作就的 打包 tar/rar/zip
+
+lftp //ftp的客户端
+	登录
+		匿名登录
+			lftp ip 
+			login
+		实名
+			lftp 用户名@IP
+			输入密码
+	ftp的客服端工具 可以操作多目录
+		put	上传
+		muput 
+		get
+		mget
+		mirror 下载目录
+		mirror -R 上传目录
+	CentOS部分：
+		2.1 修改/etc/vsftpd/vsftpd.conf
+			将这两行#chroot_list_enable=YES#chroot_list_file=/etc/vsftpd.chroot_list
+			注释去掉 chroot_list_enable=YES chroot_list_file=/etc/vsftpd/chroot_list
+
+		2.2 新增一个文件: /etc/vsftpd/chroot_list
+			内容写需要限制的用户名： test 重新启动vsftpd#service vsftpd restart
+
+
+
+	
+		
+		
+nfs 服务器搭建
+	服务器端
+		1.创建共享目录
+			mkdir dir
+		2.修改配置文件
+			/etc/exports
+				加入 目录 *(rw,sync)
+		3.重启服务
+			sudo service nfs-kernel-server restart
+	客服端
+		1.挂载服务器共享目录
+			mount 192.168.0.105:/home/zero/share /mnt/nfsshare
+		
+ssh 服务器 
+	安装ssh
+			
+	登录
+		ssh 用户名@IP
+	退出登录
+		logout
+	scp 命令
+		scp -r 目标用户名@IP:目录	己方目录
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+

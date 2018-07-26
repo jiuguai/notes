@@ -1,0 +1,34 @@
+1.wget 安装源
+	yum localinstall 网址链接
+2.查看安装源是否更新
+	yum repolist enabled | grep "mysql.*-comunity.*"
+3.配置源
+	vim /etc/yum.repos.d/mysql-community.repo
+4.安装
+	yum install mysql-community-server
+5.查看
+	service mysqld status
+	ps -ef | grep mysql
+	netstat -a|grep mysql
+6.启动服务
+	systemctl restart mysqld
+
+	grep 'temporary password' /var/log/mysqld.log
+	修改密码策略
+		在/etc/my.cnf文件添加validate_password_policy配置，指定密码策略
+			validate_password_policy=0
+		如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：
+			validate_password = off
+		重新启动mysql服务使配置生效：
+			systemctl restart mysqld
+			
+	my.cnf //为连接的每个客户端 执行的语句	
+		init_connect='SET NAMES utf8'
+
+
+
+
+	
+	
+	
+	

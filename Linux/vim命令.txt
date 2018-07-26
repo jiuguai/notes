@@ -1,0 +1,100 @@
+重要的配置路径
+	/etc/vim/.vimrc
+	~/.vimrc
+
+分屏	切屏 ctrl+ww
+	sp		↑↓
+	vsp		←→
+	qall
+	wall
+	qwall
+	xall
+	
+命令模式
+	移动
+		hjkl 0	$
+		←↓↑→ 首	尾
+		行条状 200G
+	删除
+		Xx			
+		←→ 子	取消之前动作
+		dw=delword 
+		D	d0
+		→	←	边
+		[num]dd		默认为1
+	撤销
+		撤销	:u
+		凡撤销	:ctrl +r
+	粘贴
+		P p
+		↑ ↓
+	复制
+		[num]yy		默认一行
+	可视模式
+		v
+		所有双击的变成 单敲  粘贴也变成当前行光标	Pp
+													←→
+	查找
+		/内容	↓↑
+		?内容	↑↓
+		# 光标所选中的单词
+	替换
+		r	单个替换
+		:s/old/new
+		:s/old/new/g
+		:%s/old/new
+		:%s/old/new/g
+		:27,30/old/new/g
+	缩进
+		<<向左
+		>>向右
+	选中单词查man文档
+		[num]K
+		
+编辑模式
+		a		A
+	→	字尾	行尾
+		i		I
+	←	字首	行首
+		o		O
+	new	↓		↑
+		s		S
+	del 字		行
+
+末行模式
+	:s/sudo/zero	选中的词
+	:s/sudo/zero/g	选中的行
+	:%s/sudo/zero	文中每行头一个
+	:%s/sudo/zero/g	文中所有
+	:22,33s/sudo/zero/g
+	
+	:(([0-9]+,[0-9]+)|%)?s/.+/.+/g
+
+	执行外部命令
+		:!order
+
+
+文件操作
+	:w filename 另存为
+	:q
+	:wq=:x
+	:q!
+	ZZ		//命令模式下
+
+
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

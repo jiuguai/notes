@@ -1,0 +1,80 @@
+
+关闭IPv6
+在 /etc/sysctl.conf 增加下面几行，并重启。
+#disable IPv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+
+
+起别名
+	alias 别名="ps -aux|grep"
+	~/.bashrc 中修改可以变为永久
+	
+挂载
+	sudo fdisk -l //获取设别信息
+	sudo mount  /dev/sdb1 /mnt/zero
+	//记得自己所在路径
+	umount /media/zero/老毛桃U盘 
+
+压缩包 
+	1.自带版本	//不能保留源文件 不打包压缩  不能压缩目录
+		gzip  -- .gz
+		gunzip
+		
+		bzip2 -- .bz2 //输入 bzip2 -k 可以保留源文件
+		bunzip2
+	2.高级版本
+		tar	-- 不使用z/j参数,该命令只能对文件或目录打包
+			参数
+				c -- 创建 -- 压缩
+				x -- 释放 -- 解压缩
+				v -- 显示信息
+				f -- 指定压缩名字
+				
+				z -- 使用gzip格式压缩文件
+				j -- 使用bzip2格式压缩文件
+			压缩
+				tar zcvf tarname.tar.gz 文件或目录
+				tar jzvf tarname.tar.bz2 文件或目录
+			解压
+				tar zxvf tarname.tar.gz -C 文件或目录
+				tar jxvf tarname.tar.bz2 -C 文件或目录
+		rar -- 有无-r 都会自动递归
+			参数
+				压缩:a
+				解压缩:x
+			压缩
+				rar a rarname 文件或目录
+				rar x rarname 目录
+		zip	-- -r 递归压缩
+			压缩:
+				zip 压缩包的名字 文件或目录
+			解压缩
+				unzip 压缩包的名字 -d 目录
+
+进程				
+	who
+	ps aux | grep ""
+		a 所有用户
+		u user
+		x 无终端
+
+	kill -l 查看信号
+	kill -信号值 pid
+	evn 当前进程的环境变量
+	top 任务管理器
+网络命令
+	ifconfig
+	ping
+	nslookup
+	sudo /etc/init.d/networking restart //刷新dns
+	
+
+
+
+
+
+	
+				

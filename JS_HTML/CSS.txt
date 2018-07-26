@@ -1,0 +1,189 @@
+一、选择器类型
+1.1常用选择器
+	1)标签选择器
+	2)类选择器
+	3)id选择器
+	4)关联选择器
+	5)组合选择器
+	标签选择器共有的属性 : id,class,title,style
+1.2基本选择器
+	1):first-child
+	2):first-letter
+	3):first-line
+	4):last-child
+	5):nth-child(2) 
+1.3层级选择器
+	1)a,b 	->组合选择器
+	2)a b 	->祖宗和后辈
+	3)a>b 	->父子
+	4)a+b 	->平级后面元素
+1.4伪类选择器 ->简单特效 
+	1):hover
+	2):focus
+	3)::selection
+	.
+1.5属性选择器
+	1)[id]
+	2)[id=use1]
+	3)[name~=us]
+	4)[name|=en]
+	5)[name^=en]
+	6)[name$=en]
+	7)[name*=en]
+二、CSS优先级
+1)内联样式(基本不用忽略)
+2)主id带下级的选择器
+3)id选择器
+4)id为主的属性选择器
+5)class选择器
+6)标签选择器
+
+三、样式
+1.1字体样式
+1)字体样式
+font-family:微软雅黑 ;
+2)字体大小
+font-size: 30px;
+3)字体类型
+font-style: italic;
+4)字体粗细
+font-weight: bold;
+
+1.2文本样式
+1)字间距
+letter-spacing
+2)词间距
+word-spacing
+3)下划线
+text-decoration
+4)文本对齐
+text-align
+5)文本缩进
+text-indent:60px
+6)文本高度
+text-height
+7)文本颜色
+color
+8)文本自动换行
+word-break:break-all;
+
+1.3背景样式
+1)背景颜色
+background-color
+2)背景图片
+background-image
+3)背景重复
+background-repeat
+4)背景滚动
+background-attachment: fixed;
+5)背景定位
+background-position: right bottom;
+
+四、CCS3样式
+1.边框样式
+1)边框圆角
+border-radius
+2)边框阴影
+box-shadow:左偏移,上便宜,模糊程度,颜色
+3)边框图片
+border-image:url(imgae_path) 30 30 [round|stretch]
+
+2背景样式
+1)背景大小
+background-size:100%
+
+2)背景的位置
+backgroud-origin
+2.1 border-box #以border位置设置背景
+2.2 padding-box #以padding位置设置背景(默认)
+2.3 content-box #以content位置设置背景
+
+3)文本样式
+3.1 text-shadow #文字阴影
+text-shadow 5px 5px 2px #000
+3.2 word-wrap
+word-wrap:break-word #词折行(浏览器默认根据单词折行)
+word-break:break-all #自折行
+
+4)字体样式
+4.1 @font-face 上传字体
+@font-face
+{
+	font-family:fzm;
+	src:url('simkai.ttf')
+}
+
+5)2D样式:transform
+5.1 translate()#重构坐标系移动
+移动坐标
+translate(30px,50px)
+
+5.2 rotate()
+旋转角度
+rotate(30deg)
+
+5.3.scale()
+比例
+scale(2,3)
+
+
+6)3D样式
+6.1 x轴旋转
+rotateX(30deg)
+6.2 y轴旋转
+rotateY(30deg)
+
+
+7)过度 transition
+transition (width|height|transform) (\d+s) (linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier\(n,n,n,n\) [\d+]s)
+7)多栏样式
+7.1 column-count 分栏数
+7.2 column-gap 间距
+column-gap:3px
+7.3 column-rule
+column-rule:3px solid #0ff
+
+8)轮廓样式
+outline-offset
+outline:1px solid #f00
+outline-offset:5px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

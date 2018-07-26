@@ -1,0 +1,83 @@
+1.数组
+1)方法
+join('/')
+pop()
+push()
+shift()
+unshift()
+reverse()
+concat()
+slice(start,end)
+sort(show)
+show(a,b){
+	return b-a //倒序
+	return a-b //正序
+}
+splice(start,end,*args)
+	args 表示替换
+
+2)检测
+arr instanceof Array
+
+2.事件对象
+1)鼠标	e.button 0 鼠标左键 1 滚轮 2右键
+onclick
+ondbclick
+onmousemove
+onmouseleave
+onmouseenter
+onmousedown
+onmouseup
+
+2)键盘	e.keyCode
+onkeydown
+onkeyup
+onkeypress
+
+3)表单事件
+onselect
+onfocus
+onblur
+onchange
+onreset
+onsubmit
+
+4)窗口事件
+onresize
+onload
+
+5)其他事件
+onerror
+	onbort		图像加载被中断
+	onunload
+oncontextmenu 右键打开菜单
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,142 @@
+首要网址 https://packagecontrol.io/
+
+__快捷键配置__
+1.eol 表示行尾  bol表示行末
+
+    { 
+        "keys": ["ctrl+4"], 
+        "command": "move_to", 
+        "args": {"to": "eol", "extend": false} 
+    },
+    { 
+        "keys": ["ctrl+0"], 
+        "command": "move_to", 
+        "args": {"to": "bol", "extend": false} 
+    }
+
+__插件安装__
+1.Package​Resource​Viewer:用于查看内置文件
+    
+    *ctrl+shift+p 输入 Package​Resource​Viewer 两个选项
+        1)修改源文件
+        2)扩展源文件
+    
+2.Terminal：打开一个命令窗口，用于各种命令操作
+    
+    1)修改快捷键
+
+        Preferences > 浏览插件 > Default (SYS_TYPE).sublime-keymap > ...
+        { "keys": ["ctrl+shift+y"], "command": "open_terminal" }
+
+3.AutoPep8：python开发规范pep8 [ctrl+shift+r]
+
+4.Anaconda：自动匹配关键字等实用功能，有效提高开发效率
+
+    1) Anaconda.sublime-settings 设置
+        "swallow_startup_errors": true,
+    2) user 配置
+        "python_interpreter":"E:/Python/Python36/python.exe",
+        "suppress_word_completions":true, 
+        "suppress_explicit_completions":true,
+        "comlete_parameters":true 
+    3)项目 > 空间另存为
+        settings 中选择虚拟环境路径 
+
+5.SublimeREPL：
+
+    1)从keymap中调查找 在与快捷键关联
+       {
+            "keys": ["f5"], 
+            "caption": "SublimeREPL: Python - RUN current file",
+            "command": "run_existing_window_command", "args":
+            {
+                "id": "repl_python_run",
+                "file": "config/Python/Main.sublime-menu"
+            }
+        } 
+
+6.emmet
+
+    通过 Package​Resource​Viewer snippets.json
+
+7.MarkdownEditing
+    
+    设置 Change color scheme
+
+8.vintageous 
+
+    通过 Package​Resource​Viewer 打开settings文件如下配置
+    让切换回来后不进入command模式
+    "vintageous_reset_mode_when_switching_tabs": false,
+
+9.ClickableUrls
+    
+    1)通过 Package​Resource​Viewer 打开 keymap
+        { "keys": ["f1"], "command": "open_url_under_cursor" }
+    *2)通过Click-bind 加入
+        "clickable_urls_browser":"chrome"
+
+10.Ctags
+    
+    "settings":
+    {
+        "python_interpreter": "E:/crawlers/crawler_env/Scripts/python"
+    } 
+
+    "file_exclude_patterns":
+    [
+        ".tags",
+        ".tags_sorted_by_file",
+        ".gemtags"
+    ],
+
+
+    配置setting command 路径
+    指令列表
+    Command Key Binding
+    rebuild_ctags                   -重建ctags索引      ctrl+t     ctrl+r
+    navigate_to_definition          -跳转到函数定义     ctrl+t     ctrl+t
+    jump_back                       -跳回               ctrl+t     ctrl+b
+    jump_back to_last_modification  -跳转到上次修改处   ctrl+t     ctrl+m
+    show_symbols                    -按函数索引查找     alt+s
+
+11.DocBlockr
+    settings-user
+    {
+    "jsdocs_extra_tags":[
+        "@Date {{date}}"
+    ],
+    // "jsdocs_function_description": false,
+
+}
+
+12.AutoFileName 插件
+      功能说明：自动补全文件(目录)名
+
+13.HTML-CSS-JS Prettify 插件
+      功能说明：HTML、CSS、JS格式化。
+      HTMLPrettfy-sublime-settings:
+          "node_path":{
+            "windows":"node路径"
+          }
+
+
+14. SublimeLinter 安装 
+
+    a) 安装插件 SublimeLinter
+    b) 安装 node
+    c) SublimeLinter-contrib-htmlhint （插入链接  https://packagecontrol.io/packages/SublimeLinter-contrib-htmlhint  ） 的安装
+    i. 用 node 在命令行安装  npm install -g htmlhint
+    ii. 再安装  SublimeLinter-contrib-htmlhint  插件
+    
+    d) SublimeLinter-jshint 的安装（插入链接  https://packagecontrol.io/packages/SublimeLinter-jshint  ）
+    i. 用 node 命令安装 npm install -g jshint
+    ii. 再安装 SublimeLinter-jshin 插件
+    
+    e) SublimeLinter-csslint（插入  https://packagecontrol.io/packages/SublimeLinter-csslint  ）
+    i. 用 node 安装 npm install -g csslint
+    ii. 再安装 SublimeLinter-csslin 插件
+
+
+
+14.SideBarEnhancements/jQuery/nodejs/JSFormat/ConverUTF-8/GBKSupport/javascript & nodejs snipptes

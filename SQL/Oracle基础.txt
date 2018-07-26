@@ -1,0 +1,180 @@
+//跟踪操作
+	set autotrace on
+
+
+一、SQLplus命令
+	show user
+	//格式化 命令行
+		set linesize 300
+		set pagesize 30
+		col ename for a10
+	//调用文本  linux环境下 调用vim
+		ed zero
+		@*.sql
+	//连接新用户
+		conn 用户名/密码 [as sysdba]
+		conn system/9Guaiguai
+		host 调用系统命令
+
+
+二、转换函数
+	to_char()
+		日期：年（yyyy） 月(mm) 日（dd）
+		时间：时（hh hh24）分（mi）秒（ss）
+		数字：任意数字（9） 本地货币符号（L）
+		select to_char(SYsdate,'yyyy-mm-dd') from dual;
+		select to_char(SYsdate,'yyyy-mm-dd hh24:mi:ss') from dual;
+		select to_char(1654314646546546,'L999,999,999,999,999,999,999') from dual;
+	to_date()
+		select to_date('1990-10-01','yyyy-mm-dd') from dual;
+	to_number()
+		无意义
+		select to_number('1')+to_number('2') from dual;
+		select '1'+'2' from dual;
+三、通用函数
+	//为空的任何计算都为空 要计算的时候需要替换
+	NVL(列|null,默认值)
+	//像if else
+	DECODE(列|字符串|数值,比较内容1,显示内容1,
+			比较内容2,显示内容2,...[,默认内容])
+
+
+
+四、事务
+	//只限于DML  DDL操作 所有未提交的事务会自动提交
+		commit
+		rollback
+
+五、伪列
+	//自动生成
+	rownum
+	select *
+	from (select  ename ,job,rownum  rn
+	from emp
+	where rownum<=pagesize*pagenum) temp
+	where temp.rn >pagesize*(pagenum-1);
+
+	//每条数据都有唯一的位置信息
+	rowid
+六、表结构相关(不建议修改表结构 直接删除)
+	varchar2
+	number :1.number(n)整数
+			2.number(n,m) 小数占m位置 整数占n-m位置
+			3.date 保存日期时间
+			4.clob 大文本数据 最多4G
+			5.blob 二进制数据4G
+		//改名字	
+		rename 旧表名称 to 新表名称
+		//截断表
+		truncate table 表名字
+		//复制表
+		create table 表名称  as 子查询
+		//闪回技术
+		flashback table emp to before drop;
+		//查看回收站
+		select original_name,Object_name,droptime from user_recyclebin;
+		//删除不进入回收站
+		drop table 表名称 purge;
+		//删除回收站 内容
+		purge table 表名称
+		//清空回收站
+		purge recyclebin;
+	
+	
+七、常用数据库对象
+	//别名 pubulic 为全局同义词
+		create [public]synonym 同义词名字 for 用户名.表名称
+		drop synonym 同义词名字
+	//序列
+		create sequence 序列名称
+		select * from user_sequence
+	//视图
+		create or replace view as 查询语句 [with read only] [with check option]
+	//索引
+		create index 索引名 on 模式.表(列)
+
+
+	//权限操作  有些权限重新登录才能获得
+	//获取权限
+		create user dog identified by wangwang;
+		grant create session  to dog;
+		grant create table to dog;
+		grant connect,resource to dog;
+		grant select ,insert on scott.emp to dog;
+	//修改密码
+		alter user dog identified by miaomiao;
+		alter user dog password expire;
+	//锁
+		alter user dog account lock;
+		alter user dog account unlock;
+	//收回权限
+		revoke connect,resource from dog;
+		revoke create session from dog;
+		revoke create table from dog;
+		drop user dog cascade;//cascade 将用户留下的东西打包带走
+	//查看用户连接情况
+		select username,sid,serial# from v$session 
+		where username='SYS';
+	//删除会话
+		alter system kill session'sid,serial#' ;
+	//查看权限  要有一定的权限才能查询
+		select * from session_privs;
+		select * from dba_sys_privs where GRANTEE='CONNECT';
+		select * from dba_sys_privs where GRANTEE='RESOURCE';
+
+八、备份
+	//适合小数据
+		选择目录
+		exp 导入
+		imp 到处
+	//冷备份 完整备份 适合一些要求不严格的系统(银行系统就不合适)
+		备份内容 
+			1.控制文件 "v$controlfile" 数据字典
+				select * from v$controlfile;	
+			2.日志文件 "v$logfile"
+				select * from v$logfile;			
+			3.数据文件(表空间) v$datafile
+				select name from v$datafile;
+			4.核心配置文件(pfile)
+				show PARAMETER pfile;
+			6.记录以上路径
+			7.关闭数据库服务
+				shutdown immediate;
+			8.拷贝以上路径文件 备份到指定路径下
+			9.恢复服务
+				startup
+九、表空间
+	//表空间名字
+		select tablespace_name from dba_tablespaces;
+	//查询表空间
+		select name from v$tablespace;
+	//修改表空间名字
+		alter tablespace zero rename to zero_Oracle
+
+
+	//创建表空间
+		CREATE TABLESPACE zero LOGGING DATAFILE 'F:\SQL_ex\zero\zero.dbf' 
+		SIZE 100M AUTOEXTEND ON NEXT 32M MAXSIZE 5000M EXTENT MANAGEMENT LOCAL;
+
+	create temporary tablespace zero_temp tempfile 'F:\SQL_ex\zero\zero_temp.dbf'
+	size 100m autoextend on next 32m maxsize 500m extent management local;
+	创建用户 映射到表空间
+		CREATE USER zero IDENTIFIED BY zero DEFAULT TABLESPACE zero TEMPORARY TABLESPACE zero_temp;
+	//删除表空间
+		DROP TABLESPACE zero INCLUDING CONTENTS AND DATAFILES;
+		DROP  TABLESPACE zero_temp INCLUDING CONTENTS AND DATAFILES cascade constraints;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

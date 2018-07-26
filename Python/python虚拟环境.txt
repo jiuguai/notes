@@ -1,0 +1,4 @@
+1 . pip3 install virtualenv
+2 . virtualenv test-env
+3 . 进入Script 中  输入activate
+4 . 输入deactivate 退出虚拟环境

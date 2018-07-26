@@ -1,0 +1,254 @@
+一、数据库的操作
+	1、查询
+		1.1 SHOW DATABASES;
+	2、创建
+		2.1 CREATE DATABASE 数据库名;
+	3、删除
+		3.1 DROP DATABASE 数据库名字
+	4、修改
+		4.1 无直接修改数据库名字   
+			4.1.1 创建新表 将旧表中的内容移到新表中	rename olddb.table_name to newdb.table_name
+			4.1.2 将旧表中的 存储过程、函数、视图 导出  然后导入新的数据中
+			
+	
+二、表和列的操作
+	USE 数据库名字
+	1、查询
+		1.1 SHOW TABLES;
+		1.2 DESC 表名;   或者全称   DESCRIBE 表名;
+		1.3 SHOW CREATE TABLE 表名;					//创表的具体信息
+	
+	2、创建
+		2.1 CREATE TABLE 表名(列名1 类型 [NOT NULL] [DEFAULT 默认值] [ PRIMARY KEY|UNIQUE] [FOREING KEY REFERENCES 外表名(列名)][CHECK(列名 比较符 条件 )],
+							  列名2 类型 [NOT NULL] [DEFAULT 默认值] [ PRIMARY KEY|UNIQUE] [FOREING KEY REFERENCES 外表名(列名)][CHECK(列名 比较符 条件 )],
+							  列名3 .....	auto_increment //自增
+							 .
+							
+							 [CONSTRAINT 外键名 FOREIGN KEY (本表关联列名) REFERENCES 外表名(外表列名)
+							  CONSTRAINT ...
+							  .
+							  .
+							  .
+							 
+							 ],
+							 [CONSTRAINT 约束名 PRIMARY KEY|UNIQUE(列名,列名...)]
+							 [CONSTRAINT 约束名 CHECK(列名1>5 AND 列名2='ZERO' ....)]
+							 
+							 )[ ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin]; 
+		
+	3、修改
+		3.1 UNIQUE 约束操作
+			3.1.1 添加
+				ALTER TABLE 表名
+				ADD CONSTRAINT 唯一约束名 UNIQUE (列名1,列名2...);//数据库公用
+				ALTER TABLE 表名
+				ADD UNIQUE 唯一约束名 (列名1,列名2...);			// MySQL独有
+			3.1.2 删除
+				ALTER TABLE 表名
+				DROP INDEX 唯一约束名;
+		3.2	PRIMARY KEY
+			3.2.1 添加
+				ALTER TABLE 表名
+				ADD PRIMARY KEY  (T1,T2);
+			3.2.2 删除
+				ALTER TABLE 表名
+				DROP PRIMARY KEY; 
+		3.3 FOREIGN KEY
+			3.3.1 添加	//使用 CONSTRAINT 这样外键名 由自己控制
+				ALTER TABLE 表名
+				ADD CONSTRAINT 外键名 FOREIGN KEY(列名) REFERENCES 外表名(外表主键列);
+			3.3.2 删除
+				ALTER TABLE 表名
+				DROP FOREIGN KEY 外键名; 	
+		3.4 CHECK	//目前5.5.28版本 并无真正的CHECK
+			3.4.1 添加
+				ALTER TABLE TEST_TABLE1
+				ADD CONSTRAINT 约束名 CHECK(T1>2 AND ...);	
+			3.4.2 删除
+				ALTER TABLE 表名
+				DROP CHECK 约束名; 
+		3.5 与其他数据库差异
+			其他主流数据库 普遍定义为 CONSTRAINT
+			ADD CONSTRAINT 
+			DROP CONSTRAINT
+		3.6 对列的操作
+			3.6.1 添加
+				ALTER TABLE table_name
+				ADD column_name datatype;
+			3.6.1 删除
+				ALTER TABLE table_name 
+				DROP COLUMN column_name;
+			3.6.1 添加
+				ALTER TABLE table_name
+				MODIFY COLUMN column_name datatype;
+				ALTER TABLE table_name
+				CHANGE COLUMN old_column_name new_column_name datatype; //可以修改列名
+		3.7 修改表名	//改名字对外表外键连接没影响
+			ALTER  TABLE table_name RENAME TO new_table_name;
+	4、删除
+		DROP TABLE table_name;
+	
+	
+三、权限的操作	
+	1 给予权限	//grant 权限 on 数据库对象 to 用户
+		1.1 给予权限   //WITH GRANT OPTION 允许授权用户 授权给予其他用户
+			GRANT ALL PRIVILEGES ON 库名.表名 TO '用户名'@'允许访问的地址' IDENTIFIED BY '用户密码' WITH GRANT OPTION;
+		1.  如果要让授予权限的用户能授权给其他用户 必须获得以下库的权限和授权时候不许有的某关键字：
+			库    :mysql.*  
+			关键字:WITH GRANT OPTION
+	2 撤销权限
+		2.1 撤销使用权限
+			REVOKE ALL PRIVILEGES ON 库名.表名 FROM 用户名@地址;
+		2.2 撤销授予权限
+			REVOKE GRANT OPTION ON 库名.表名 FROM 用户名@地址;
+		
+	3 刷新权限
+		FLUSH PRIVILEGES;
+四、安全
+	1 修改密码
+		1.1	用SET PASSWORD命令
+			mysql> set password for 用户名@地址 = password(‘新密码’); 
+		1.2	用mysqladmin 
+			mysqladmin -u用户名 -p旧密码 password 新密码 
+		1.3	用UPDATE直接编辑user表 
+			mysql> use mysql; 
+			mysql> update user set password=password(‘123’) where user=’root’ and host=’localhost’; 
+			mysql> flush privileges;
+		1.4	跳过登录修改密码
+			1.4.1
+				DOS窗口进入 mysql\bin 输入 -skip-grant-tables
+			1.4.2
+				打开另一个DOS窗口 进入mysql\bin 
+			1.4.3
+				重复1.3的操作后 退出 注销系统后可用
+	2 数据库的导入导出
+		1.1 mysqldump
+			-d	导出表结构(--no-data)
+			-t  导出表数据(--no-create-info)
+			-n	只导出数据(--no-create-db)
+			-R	存储过程或者函数(-routines)
+			--triggers 默认导出触发器(--skip-triggers 为不到出触发器)
+			-B	(--databases 导出数据库列表 ，单个库时可省略)
+			--tables 表列表 (单个表时可省略)
+		1.2 导出
+			mysqldump -uuser -ppassword >\*.sql
+		1.3 导入
+			mysqldump -uuser -ppassword <\*.sql
+		1.4 自增备份恢复 样例
+			mysqlbinlog  e:\mysql_log\logbin.000010 |mysql -uroot -pwind
+			mysqlbinlog --start-position="593" --stop-position="596" e:\mysql_log\logbin.000009 |mysql -uroot -pwind
+			mysqlbinlog --start-datetime="2018-03-14 17:55:09" --stop-datetime="2018-03-14 17:56:02" e:\mysql_log\logbin.000009 |mysql -uroot -pwind
+		1.5 自增转换为文本阅读 样例
+			mysqlbinlog  e:\mysql_log\logbin.000010 >e:\mysql_log\logbin10.txt
+五、数据的基本操作
+	1 SELECT
+		SELECT 列名称 FROM 表名称 WHERE
+	2 INSERT
+		INSERT INTO 表名称 VALUES (值1, 值2,....)
+		INSERT INTO 表名称 (列1, 列2,...) VALUES (值1, 值2,....)
+	3 UPDATE
+		UPDATE 表名称 SET 列名称 = 新值 ,列名称 = 新值 ... WHERE 列名称 = 某值
+	4 DELETE
+		DELETE FROM 表名称 WHERE 列名称 = 值
+
+六、对数据类型 和数据长度 数据关系 在实际情况下的深思
+	1 待定...
+	2 ...
+	.
+	.
+	.
+
+
+五、创建视图
+	1 创建视图
+		CREATE VIEW 视图名(列1，列2...)
+		AS SELECT (列1，列2...)
+		FROM ...;
+	2 修改视图
+		CREATE OR REPLACE VIEW 视图名 AS SELECT [...] FROM [...];	
+	3 WITH CHECK OPTION 
+		加入视图语句中 可以校验插入数据
+	4 查看视图
+		show table status where comment='view';
+		select table_name from information_schema.tables where table_schema='test_4' and table_type='view';
+六、索引 //以下
+	1 alter table
+		alter table table_name add index index_name (column_list) ;
+		alter table table_name add unique (column_list) ;
+		alter table table_name add primary key (column_list) ;
+	2 create
+		create index index_name on table_name (column_list) ;
+		create unique index index_name on table_name (column_list) ;
+	3 drop
+		drop index index_name on table_name ;
+		alter table table_name drop index index_name ;
+		alter table table_name drop primary key ;
+七、创建函数
+	delimiter //
+		create function day_add (d1 date,i1 int)
+		returns date
+		begin
+
+		return date_add(d1,interval  i1   day);
+
+
+		end
+	//
+
+	
+八、创建存储过程
+	1、存储过程
+		DELIMITER // 
+	
+		CREATE PROCEDURE proc1(IN s int) 
+		BEGIN
+		SELECT stu_name  FROM student where stu_id=s; 
+		END
+		// 
+	DELIMITER ;
+	
+	call proc1(4);
+	
+	drop procedure IF EXISTS proc1 ;
+	
+	2、触发器
+		CREATE TRIGGER trigger_name
+		trigger_time
+		trigger_event ON tbl_name
+		FOR EACH ROW
+		trigger_stmt
+		
+		trigger_name：标识触发器名称，用户自行指定；
+		trigger_time：标识触发时机，取值为 BEFORE 或 AFTER；
+		trigger_event：标识触发事件，取值为 INSERT、UPDATE 或 DELETE；
+		tbl_name：标识建立触发器的表名，即在哪张表上建立触发器；
+		trigger_stmt：触发器程序体，可以是一句SQL语句，或者用 BEGIN 和 END 包含的多条语句。
+		
+		在 INSERT 型触发器中，NEW 用来表示将要（BEFORE）或已经（AFTER）插入的新数据；
+		在 UPDATE 型触发器中，OLD 用来表示将要或已经被修改的原数据，NEW 用来表示将要或已经修改为的新数据；
+		在 DELETE 型触发器中，OLD 用来表示将要或已经被删除的原数据；
+
+九、创建事件
+	delimiter //
+		create event if not exists e_test
+		on schedule EVERY 3 SECOND
+		[on  completion preserve]
+		[enable|disable]
+		[comment 'you are welcome']
+		do
+		begin 
+		insert into student (stu_name,stu_cn) values('zero','test');
+		end;
+	//
+	delimiter ;
+
+	//删除事件
+	drop event if exists e_test;
+
+
+
+
+十一、关于mysql的网络环境部署
+
+
+十二、与 SQL-Server  Oracle 的迁移

@@ -1,0 +1,149 @@
+初始化配置
+
+    git config --global user.name zero
+    git config --global user.email wind13zero@163.com
+    git config --list
+    存储账号密码
+    git config --global credential.helper store
+
+    git init
+    git init --bare //裸露的仓库 无工作区域
+
+
+    git status
+
+忽略规则
+
+    .gitignore
+    echo '*.o' >> .gitignore
+    > .gitignore
+    echo 'out/' >> .gitignore
+
+添加到暂存库
+
+    git add filename
+    git add .
+    git add *.txt
+
+提交
+
+    git commit -m 'first'
+    git commit -m 'second' test.txt
+
+
+    //一次性提交
+    git commit -am 'headname' [filenames]
+  
+    //修正上一次提交
+    git commit --amend 
+    //追加
+    git commit -C head -a --amend
+
+    //查看提交信息
+    git log
+    git log --oneline
+
+撤销
+
+    从暂存区还原到工作区 
+    如果暂存区没有就从提交head头获取
+    git checkout -- t1.txt
+    git checkout -- .
+
+    不带参数时候撤销暂存区 不影响工作区
+    git reset [--hard] head t2.txt
+    将某个版本 返回到暂存区
+    git reset 5944f10 t2.txt
+
+文件删除
+    
+    删除文件
+    git rm filename
+    保存工作区的文件    
+    另一个作用就是移除暂存仓的文件
+    git rm --cached filename
+    git rm -f filename
+
+    直接删除
+    删除文件后
+    git add .
+
+
+重命名
+    
+    git mv oldname new name
+    
+    非git 删除
+    git add .
+
+git分支
+
+    查看    
+    git branch [-a]
+    
+    创建
+    git branch dev
+    
+    切换
+    git checkout dev
+        切换分支如果本来分支有未提交 要不提交要不使用以下命令
+        git stash
+        切回来时候使用如下命令
+        //查看
+        git stash list
+        //还原
+        git stash apply stash@{num}
+        //删除stash
+        git stash drop stash@{num}
+
+    
+    删除      //切换到另一个分支才可以删除
+    git branch -d dev
+    
+    修改分支名
+    git branch -m dev fix
+
+分支合并
+    
+    git  merge dev [--no-commit]
+    解决冲突后
+    git commit -am 'mergeversion'
+
+
+查看差异
+    
+    暂存区与工作比较
+    git diff
+
+    暂存区与版本区
+    git diff --staged
+
+    版本之间比较
+    git diff hashmac hashmac
+
+远程仓库
+
+    git clone
+    提交
+    git push https://github.com/jiuguai/test.git master
+    给远程仓库起别名
+    git remote add gitname [url]
+    git push gitname
+    //下载
+    git pull git@github.com:jiuguai/test.git master
+    //生成 ssh 密钥、公钥
+    ssh-keygen
+
+
+
+
+
+
+
+
+
+
+
+
+
+

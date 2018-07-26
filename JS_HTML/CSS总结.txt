@@ -1,0 +1,245 @@
+一、选择器类型
+1.常用选择器
+1).class1{}
+2)label{}
+3)*{}
+4).class1 p{}
+5)label,p{}
+6)#id
+
+2.基本选择器
+1):first-child
+2):first-letter
+3):first-line
+4):last-child
+5)nth-child(3)
+
+3.层级选择器
+1)a,b
+2)a b
+3)a>b
+4)a+b
+
+4.伪类选择器
+1):hover
+2):focus
+3)::selection
+
+5.属性选择器
+1)[attri]		有什么属性
+2)[attri=.+]	
+3)[attri*=.+]	包含
+4)[attri^=.+]	已什么开头包含
+5)[attri$=.+]	已什么结尾包含
+
+6)[attri~=us]	包含某个单词 必须 空格分割
+7)[attri|=en]	已什么单词开头 必须 - 连接
+
+
+二、样式
+1.字体样式
+font-family:微软雅黑
+font-size:30px
+font-weight:bold
+font-style:italic
+@font-face{
+	font-family:幼圆;
+	src:url('幼圆.ttf')
+}
+
+2.文本样式
+letter-spacing:5px;
+word-spacing:5px;
+text-decoration:underline|overline|line-through
+text-align:center|left|right
+text-indent:50px 缩进
+line-height:15px;
+color:#F0F
+word-break:break-all
+word-wrap:break-word
+text-shadow:5px 6px 1px #888
+
+3.背景样式
+background:#F0F url('') no-reapeat 50px 50px fixed
+background-size:50px 50px
+background:linear-gradient(90deg,rgba(20,20,20,0.95),rgba(70,70,70,0.8),#fff )
+background-origin:padding-box|border-box|content-box
+
+4.边框样式
+border :10px solid|dotted|dashed #F0F;
+border-radius:5px 3px 4px 7px
+box-shadow:5px 5px 3px #333
+border-image:url('') 3 4 5 6 stretch|round|repeat
+
+
+5.鼠标样式
+cursor:crosshair|pointer|text|wait|help|default
+
+6.列表样式
+list-style:disc|circle|square|decimal|lower-roman|upper-roman|lower-alpha
+
+7.尺寸样式
+width
+height
+max-width
+max-height
+min-width
+min-height
+
+8.textarea样式
+resize:none|both|horizontal|vertical
+
+9.表格样式
+border:1px solid #0FF;
+text-align: center;
+vertical-align:middle;
+border-collapse:collapse	表边框合并
+border-spacing:20px			表边框距离
+
+10.滚动条样式
+overflower:scroll|hidden|visible|auto
+overflower-x:scroll|hidden|visible|auto
+overflower-y:scroll|hidden|visible|auto
+
+11.显示和隐藏样式
+display:none|block|inline
+visibility:visible|hidden
+
+12.内外边距样式
+margin:5px [5px 5px 5px]
+padding:5px [5px 5px 5px]
+
+13.浮动
+float:left|right
+浮动块标签会边行标签
+
+14.清除浮动
+clear:both|left|right
+
+15.定位
+position:relative
+position:absolute
+position:fixed
+z-index:1
+
+16.2D
+transform:translate(25px ,25px)
+transform:rotate(30deg)
+transform:scale
+
+17.过度
+transition:width 2s ,height 2s, transform 2s linear|ease 2s;
+
+18.轮廓样式
+outline:#ff0 solid 1px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

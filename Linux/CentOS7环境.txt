@@ -1,0 +1,61 @@
+yum list repo
+添加epel安装源:
+	yum search epel
+	yum -y install	epel-release.noarch
+	yum makecache	//将服务器上的软件包信息
+
+
+安装KVM
+	https://blog.csdn.net/github_27924183/article/details/76914322?locationNum=5&fps=1
+	yum -y install kvm
+	yum -y install qemu-kvm python-virtinst libvirt libvirt-python virt-manager libguestfs-tools
+	reboot
+	lsmod | grep kvm
+
+	
+	
+关闭防火墙
+
+	iptables -t nat -L	//查看
+	systemctl list-unit-files | grep fire
+	systemctl stop firewalld.servise
+	systemctl disable firewalld.servise
+注销虚拟机
+	 yum install acpid -y
+	/etc/init.d/acpid restart 
+
+	virsh net-list
+	virsh net-destroy default
+	virsh net-undefine default
+
+网卡命名	
+	禁用该可预测命名规则	net.ifnames=0 biosdevname=0
+		vi /etc/default/grub 
+		GRUBCMDLINELINUX=^"net.ifnames=0 biosdevname=0 .+"$
+		
+	来重新生成GRUB配置并更新内核参数
+		grub2-mkconfig -o /boot/grub2/grub.cfg 
+		
+	编辑网卡的配置文件
+		vi /etc/sysconfig/network-scripts/网卡名
+		NAME=name
+		DEVICE=name
+		
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
