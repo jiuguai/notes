@@ -137,6 +137,173 @@ __插件安装__
     i. 用 node 安装 npm install -g csslint
     ii. 再安装 SublimeLinter-csslin 插件
 
+14. a file Icon
+
+15. HTML-CSS-JS Prettify
+    自动格式化   配置node路径
+        
 
 
-14.SideBarEnhancements/jQuery/nodejs/JSFormat/ConverUTF-8/GBKSupport/javascript & nodejs snipptes
+15.SideBarEnhancements
+    ResourceView >Theme-Default>Default.sublime-theme
+       调整为
+        // Side Bar
+        {
+            "class": "sidebar_container",
+            "layer0.tint": [44, 45, 39],
+            "layer0.opacity": 1.0,
+            "content_margin": 0,
+        },
+        {
+            "class": "sidebar_tree",
+            "row_padding": [16, 3, 16, 3],
+            "indent": 10,
+            "indent_offset": 16,
+            "indent_top_level": false,
+            "dark_content": false,
+            "spacer_rows": true
+        },
+        {
+            "class": "sidebar_tree",
+            "platforms": ["windows"],
+            "row_padding": [16, 2, 16, 2],
+        },
+        {
+            "class": "tree_row",
+            "attributes": ["!hover"],
+            "layer0.opacity": 0.0,
+        },
+        {
+            "class": "tree_row",
+            "attributes": ["selectable", "hover"],
+            "layer0.tint": [220, 220, 220],
+            "layer0.opacity": 0.1,
+        },
+        {
+            "class": "tree_row",
+            "attributes": ["selected"],
+            "layer0.tint": [39, 40, 34],
+            "layer0.opacity": 1.0,
+        },
+        {
+            "class": "sidebar_heading",
+            "fg": [166, 226, 44],
+            "font.size": 15,
+            "font.bold": true,
+            "shadow_color": [255, 255, 255, 0.36],
+            "shadow_offset": [1, 1]
+        },
+        {
+            "class": "sidebar_label",
+            "fg": [230, 230, 230],
+            "font.size": 13
+        },
+        {
+            "class": "sidebar_label",
+            "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+            "fg": [102, 217, 239],
+        },
+        {
+            "class": "sidebar_label",
+            "parents": [{"class": "tree_row", "attributes": ["expandable"]}],
+            "settings": ["bold_folder_labels"],
+            "font.bold": true
+        },
+        // Open Files Icons
+        {
+            "class": "close_button",
+            "layer0.texture": "Theme - Default/common/light/open_file_close.png",
+            "layer0.opacity": { "target": 0.3, "speed": 4.0, "interpolation": "smoothstep" },
+            "layer0.tint": [255, 255, 255],
+            "content_margin": [8, 8],
+        },
+        {
+            "class": "close_button",
+            "attributes": ["hover"],
+            "layer0.opacity": { "target": 0.6, "speed": 4.0, "interpolation": "smoothstep" }
+        },
+        {
+            "class": "close_button",
+            "attributes": ["dirty"],
+            "layer0.texture": "Theme - Default/common/light/open_file_dirty.png",
+        },
+        {
+            "class": "close_button",
+            "attributes": ["hover", "dirty"],
+            "layer0.texture": "Theme - Default/common/light/open_file_close.png",
+        },
+        // Folder & File Icons
+        {
+            "class": "disclosure_button_control",
+            "layer0.texture": "Theme - Default/common/light/disclosure_unexpanded.png",
+            "layer0.opacity": { "target": 0.3, "speed": 4.0, "interpolation": "smoothstep" },
+            "content_margin": [8, 8]
+        },
+        {
+            "class": "disclosure_button_control",
+            "parents": [{"class": "tree_row", "attributes": ["expanded"]}],
+            "layer0.texture": "Theme - Default/common/light/disclosure_expanded.png",
+        },
+        {
+            "class": "disclosure_button_control",
+            "attributes": ["hover"],
+            "layer0.opacity": { "target": 0.5, "speed": 4.0, "interpolation": "smoothstep" },
+        },
+        {
+            "class": "icon_folder",
+            "layer0.texture": "Theme - Default/common/light/folder_closed.png",
+            "layer0.opacity": 0.66,
+            "content_margin": [9, 8]
+        },
+        {
+            "class": "icon_folder",
+            "parents": [{"class": "tree_row", "attributes": ["expanded"]}],
+            "layer0.texture": "Theme - Default/common/light/folder_open.png",
+            "layer0.opacity": 0.66,
+            "content_margin": [9, 8]
+        },
+        {
+            "class": "icon_folder_loading",
+            "layer0.texture":
+            {
+                "keyframes":
+                [
+                    "Theme - Default/common/light/folder_loading_01.png",
+                    "Theme - Default/common/light/folder_loading_02.png",
+                    "Theme - Default/common/light/folder_loading_03.png",
+                    "Theme - Default/common/light/folder_loading_04.png",
+                    "Theme - Default/common/light/folder_loading_05.png",
+                    "Theme - Default/common/light/folder_loading_06.png",
+                    "Theme - Default/common/light/folder_loading_07.png",
+                    "Theme - Default/common/light/folder_loading_08.png",
+                    "Theme - Default/common/light/folder_loading_09.png",
+                    "Theme - Default/common/light/folder_loading_10.png",
+                    "Theme - Default/common/light/folder_loading_11.png",
+                    "Theme - Default/common/light/folder_loading_12.png",
+                    "Theme - Default/common/light/folder_loading_13.png",
+                    "Theme - Default/common/light/folder_loading_14.png",
+                    "Theme - Default/common/light/folder_loading_15.png",
+                    "Theme - Default/common/light/folder_loading_16.png",
+                    "Theme - Default/common/light/folder_loading_17.png",
+                    "Theme - Default/common/light/folder_loading_18.png",
+                    "Theme - Default/common/light/folder_loading_19.png",
+                    "Theme - Default/common/light/folder_loading_20.png",
+                ],
+                "loop": true,
+                "frame_time": 0.08,
+            },
+            "layer0.opacity": 0.3,
+            "content_margin": [9, 8]
+        },
+        {
+            "class": "icon_folder_dup",
+            "layer0.texture": "Theme - Default/common/light/symlink.png",
+            "layer0.opacity": 0.3,
+            "content_margin": [9, 8]
+        },
+        {
+            "class": "icon_file_type",
+            "layer0.opacity": 0.8,
+            "content_margin": [9, 8]
+        },
+16.jQuery/nodejs/JSFormat/ConverUTF-8/GBKSupport/javascript & nodejs snipptes

@@ -1,0 +1,342 @@
+实体字符
+	空格 	&nbsp;
+	“		&quot;
+	> 		&gt;
+	< 		&lt;
+	版权  	&copy;
+	& 		&amp;
+
+meta 元素
+	描述文档的元数据
+	charset
+		<meta charset="UTF*8">
+	content
+		配合 name http*equiv 使用
+	name
+		descriiption
+			<meta name="description" content="网易云音乐是一款专注于发现与分享的音乐产品，依托专业音乐人、DJ、好友推荐及社交功能，为用户打造全新的音乐生活。">
+		keywords
+			<meta name="keywords" content="网易云音乐，音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，官网，music.163.com">
+		viewport
+			<!-- 移动端实用 -->
+			<meta name="viewport" content="width=device*width,initial*scale=1.0,maximum*scale=1,user*scalable=no">
+		application*name
+		author
+		generator
+		referrer
+		<meta name="referrer" content="never">
+	http*equiv
+		可以定时刷新 和刷新后页面走向
+		refresh
+		content*language
+		content*type
+		default*style
+		set*cookie
+		X*UA*Compatible
+			网页呈现方式
+			保证其他浏览器展示效果一致
+			<meta http*equiv="Compatible" content="ie=edge">
+
+样式插入
+	<link rel="stylesheet" href="style.css" type="text/css" media="all">
+	rel  : 当前文档与资源之间的关系
+		* stylesheet,alternate,next,prev,author,icon,license,print ....
+		多个关键字
+		<link rel="author license" href="1">
+	href : 资源的目标地址
+	type : 资源的MIME类型
+		如有设置
+		浏览器不会载入不支持的格式
+	media: 对资源有效的媒体设备
+		<link rel="stylesheet" href="1" media="print">
+		<link rel="stylesheet" href="1" media="(max*width: 800px)">
+
+插入脚本
+	<script src="app.js" type="text/javascript" charset="utf*8" crossorigin="anonymous" async defer></script>
+	crossorigin	: 跨域脚本处理
+		anonymous
+			不带cookie
+		use-credentials
+			带cookie
+	async		: 立即执行
+	defer		: HTML 加载完后 执行
+
+	<!-- 在另一个doc中创建 -->
+	<script>
+		export function test() {
+			console.log('test');
+		};
+		export function greet(msg) {
+			console.log(msg);
+		};
+	</script>
+
+	<!-- 引用模块上一个 -->
+	<script type="module">
+		import {test,greet} from "./api.js";
+	</script>
+
+	<script type="test/x*handlebars*template">
+		
+	</script>
+
+内容分区
+	article
+		完整独立内容
+		可独立可复用
+	section
+		有主题的内容
+		场景：
+			文章的章节
+			Tab的内容
+			<article>
+				<header><h1>前端基础课程</h1></header>
+				<section>
+					<h2>前端入门</h2>
+					<div>web前端...</div>
+				</section>
+				<section>
+					<h2>HTML</h2>
+					<div>HTML是...</div>
+				</section>
+			</article>
+	div
+		#无任何语义
+			* 内容容器
+			* 样式
+
+	nav
+		#含有多个超连接的区域
+			* 其他页面
+			* 页面内部其他部分
+			* 一个页面可以有多个nav
+		#主要场景
+			* 传统导航
+			* 侧边栏导航
+			* 页内导航
+	
+	aside
+		#表示一个和其余页面内容几乎无关的部分
+		#主要场景
+			包含在article元素中作为主要内容的附属信息
+				* 参考资料
+				* 名称解释
+				* 相关引用
+				* 个人资料
+			article 元素之外,页面或者站点全局的附属信息
+				* 侧边栏
+				* 广告
+
+	header
+		#概括性内容
+			可能包含标题元素
+			也可以包含其他元素，像logo、分节头部、搜索表单等
+	
+	footer
+		#章节内容或者根节点元素的页脚
+		
+		#常用场景
+			* 文章作者
+			* 相关阅读链接
+			* 版权
+
+超链接
+	*属性
+		* href
+
+		* target
+			_blank
+			_self
+
+			_top
+			_parent
+			浏览器环境名称
+			<iframe src="" frameborder="0" name=浏览器环境名称></iframe>
+		* download
+			<a href="" download>点击下载</a>
+			<a href="" download=newName>点击下载,跨域无效</a>
+		* hreflang
+			语言： en
+		* rel
+			当前文档与被链接文档的关系
+		* rev
+			被链接文档与当前文档关系
+		* type
+
+		* referrerpolicy
+			发送策略
+	* 另一个文档
+	* 文档内部
+		<a href="#id">返回所处id</a>
+		<a href="#">top</a>
+	* Email地址
+		<a href="mailto:yixinplus@188.com">test</a>
+	* 电话号码
+		<a href="tel:18774979616"></a>
+
+文本元素
+	<p>哈勃望远镜</p>
+	<pre>
+	    <code>
+	      function add(){
+
+	      }
+  		</code>
+	</pre>
+	<blockquote cite=href>
+		引用	
+	</blockquote>
+
+	
+	<em>倾斜</em>
+	<strong>强调</strong>
+	<span>需要样式 但不需语义</span>
+	<br>
+
+	引用
+	<cite>鲁迅在<q>故乡</q>中写到</cite>
+
+列表元素
+	<ul>
+		<li></li>
+		<li></li>
+	</ul>
+	<ol type="A" start="3" reversed>
+	    <li></li>
+	    <li ></li>
+	    <li value="2"></li>
+	    <li ></li>
+  	</ol>
+	<dl>
+		<!** 多对多的对应关系 **>
+		<dt>术语1</dt>
+			<dd>术语1的描述</dd>
+			<dd>术语1的描述 en</dd>
+		
+		<dt>术语2</dt>
+			<dd>术语2的描述</dd>
+			<dd>术语2的描述 en</dd>
+		
+	</dl>
+
+图片嵌入
+
+
+表格元素
+	#表格数据
+		*通过二维数据表表示信息
+		*不应该作为布局使用
+
+	#属性
+		* border
+		+ th 属性
+			* colspan
+			* rowspan
+			* headers
+			+ scope
+				* row
+				* col
+				* rowgroup
+				* colgroup
+				* aoto
+		+ td属性
+			* colspan
+			* rowspan
+			* headers
+	<table>
+		<!-- <colgroup span=2 width=50></colgroup> -->
+		<colgroup>
+			<!-- 对列进行操作 -->
+			<col width=50>
+			<col span=2 width=100>
+		</colgroup>
+    	<caption>照片冲印价格详情</caption>
+	    <thead>
+	      <tr><th>相片尺寸</th><th>富士</th><th>柯达</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr><td>6寸</td> <td>0.45</td> <td>0.6</td> </tr> 
+	    </tbody>
+	    <tfoot>
+	      <tr>
+	        <td colspan="3">运费8元单</td>
+	      </tr>
+	    </tfoot>
+  	</table>
+
+嵌入内容
+	http://course.study.163.com/400000003262018/lecture-400000004439066
+	#插入图片
+		<!-- time = 9M35s -->	
+		<img src="E:\st\note\GIT\git工作流程图.png" alt=""
+			srcset="/xx/xxx.png 256w,/xxx/xxx.png 512w" 
+			sizes = "(max-width:1080px) 128px, 256px"
+		>
+		
+		* src
+		* alt
+			未显示时候显示内容
+		* width
+		* height
+		* srcset
+			根据宽度决定图片显示种类
+		* sizes
+			响应式策略
+		<!-- img其它属性; 5M37s -->
+	
+	#图片热点
+		<!-- 热点图相关属性;11M53s -->
+		<!-- 热点图应用;12M14s ,14M12s -->
+
+	#音频和视频
+		vidio > audio
+		<!--video标签属性;15M25s  -->
+		* poster
+			封面
+		* autoplay
+			自动播放
+		* loop
+			重复
+		* muted
+			静音
+		* preload
+			预先加载
+			none
+				不需要加载
+			metadata
+				元数据
+			auto
+				需要加载
+
+		<!-- example;17M21s, 21M20s -->
+
+	#广告
+		<iframe src="" frameborder="0"></iframe>
+		* src
+		* width
+		* height
+		* name
+		* srcdoc
+			<iframe srcdoc="<div>hello, world!</div>" height="200" width="200" frameborder="0"></iframe>
+		* sandbox
+			限制iframe
+			- allow-forms
+			- allow-pointer-lock
+			- allow-popups
+			- allow-presentation
+			- allow-same-origin
+			- allow-scripts
+			- allow-top-navigation
+			<!-- example; 25M43s -->
+		* allowfullscreen
+			是否允许全屏展示
+		* allowpaymentrequest
+			是否允许支付请求
+		* referrerpolicy
+			获取资源策略
+
+表单
+	# 表单元素
+		<!-- 表单配置;7:30 9:25 -->
+		
+	# DOM编程艺术
