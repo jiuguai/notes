@@ -27,7 +27,8 @@ settings default
         [
             "Markdown",
             "Vintage"
-        ]
+        ],
+        "update_check": false,
     }
 
 ### Ctranslator
