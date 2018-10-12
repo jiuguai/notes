@@ -55,6 +55,23 @@ oncontextmenu 右键打开菜单
 
 
 
+3)节点
+parentNode 
+firstChild
+lastChild
+childNodes
+
+previousSibling
+nextSibling
+
+
+parentElement
+firstElementChild
+lastElementChild
+children
+
+previousElementSibling
+nextElementSibling
 
 
 

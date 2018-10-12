@@ -60,12 +60,21 @@ text-decoration
 text-align
 5)文本缩进
 text-indent:60px
+text-indent:2em
 6)文本高度
 text-height
 7)文本颜色
 color
 8)文本自动换行
-word-break:break-all;
+word-wrap:break-word|normal;
+word-break:break-all|normal|keep-all
+9)空白处理
+white-space:pre-wrap|normal|nowrap|pre|pre-line
+10) text-overflow
+	text-overflow : clip|ellipsis
+		text-overflow :ellipsis
+		需配合 overflow:hidden
+			   white-space:nowrap|pre
 
 1.3背景样式
 1)背景颜色
@@ -100,7 +109,7 @@ backgroud-origin
 
 3)文本样式
 3.1 text-shadow #文字阴影
-text-shadow 5px 5px 2px #000
+text-shadow 5px 5px 2px #000,...
 3.2 word-wrap
 word-wrap:break-word #词折行(浏览器默认根据单词折行)
 word-break:break-all #自折行

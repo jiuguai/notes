@@ -1,4 +1,12 @@
-初始化配置
+[TOC]
+
+
+### git 工作流程图
+
+![imge](git工作流程图.png)
+
+****
+### 初始化配置
 
     git config --global user.name zero
     git config --global user.email 
@@ -11,7 +19,7 @@
 
     git status
 
-远程仓库
+### 远程仓库
     //生成 ssh 密钥、公钥
     ssh-keygen -t rsa -C
     
@@ -27,35 +35,34 @@
     //删除远程分支
     git push origin --delete ask_branch
 
-config 文件可以添加
-    [remote "origin"]
-        url = https://github.com/jiuguai/test.git
-        fetch = +refs/heads/*:refs/remotes/origin/*
-    [branch "master"]
-        remote = origin
-        merge = refs/heads/master
+### config 文件可以添加
+        [remote "origin"]
+            url = https://github.com/jiuguai/test.git
+            fetch = +refs/heads/*:refs/remotes/origin/*
+        [branch "master"]
+            remote = origin
+            merge = refs/heads/master
 
 
-忽略规则
+### 忽略规则
 
     .gitignore
     echo '*.o' >> .gitignore
     > .gitignore
     echo 'out/' >> .gitignore
 
-git add
+******
+### 命令
+####git add
 
-    git add filename
-    不包括删除文件
-    git add .
-    不会提交新文件
-    git add -u
-    . -u 的综合体
-    git add -A
+    git add filename 
+    git add .           #不包括删除文件
+    git add -u          #不会提交新文件
+    git add -A          #. -u 的综合体
     git add *.txt
 
 
-git commit
+####git commit
 
     git commit -m 'first'
     git commit -m 'second' test.txt
@@ -73,98 +80,81 @@ git commit
     git log
     git log --oneline
 
-git reset
+####git reset
     git reset --[mixed|soft|hard] HEAD~5
     git reset 7f33013
 
     回滚文件 HEAD 指针不移动
 
-git diff
+#### git diff
     比较工作区和暂存区
     git diff
 
     比较两个快照
     git diff 7f33013 7fwd013
 
-    工作目录和快照比较
+    工作区和快照比较
     git diff 7f33013
 
     暂存区与快照比较
     git --cached [7f33013]
 
-git rm
+#### git rm
     git rm filename
     git rm --cached filename
     git rm -f filename
 
 
-git mv
+#### git mv
     git mv oldfile newfile
 
-
-git branch
-    查看    
-    git branch [-a]
-    创建
-    git branch bran_name
-    切换分支
-    git checkout bran_name
-    查看分支
-    git log --decorate --oneline --graph --all
-    创建并切换分支
-    git checkout -b bran_name
-
-撤销
+#### git checkout
 
     从暂存区还原到工作区 
     如果暂存区没有就从提交head头获取
-    git checkout -- t1.txt
-    git checkout -- .
+    git checkout [head|branch_addr]-- t1.txt
 
-    不带参数时候撤销暂存区 不影响工作区
-    git reset [--hard] head t2.txt
-    将某个版本 返回到暂存区
-    git reset 5944f10 t2.txt
+******
+### git分支
+####查看    
+    git branch [-a]
+    git log --decorate --oneline --graph --all
 
-
-git分支
-    创建
+#### 创建
     git branch dev
     
-    切换
+#### 切换
     git checkout dev
+####创建并切换分支
+    git checkout -b bran_name
 
-切换分支如果本来分支有未提交 要不提交要不使用以下命令
-git stash stashname
-切回来时候使用如下命令
-//查看
-git stash list
-//还原
-git stash apply stash@{num}
-//删除stash
-git stash drop stash@{num}
+#### 搭配stash    
+    切换分支如果本来分支有未提交 要不提交要不使用以下命令
+    git stash stashname
+    切回来时候使用如下命令
+    //查看
+    git stash list
+    //还原
+    git stash apply stash@{num}
+    //删除stash
+    git stash drop stash@{num}
 
-    
-
-    删除      //切换到另一个分支才可以删除
+####   删除      
+    //切换到另一个分支才可以删除
     git branch -d dev
     
-    修改分支名
-    git branch -m dev fix
+#### 修改分支名
+    git branch -m dev fix_name
 
-git merge
+####git merge
     git  merge dev [--no-commit]
     解决冲突后
     git commit -am 'mergeversion'
-git rebase  （replace base）
+####git rebase  
+    #replace base
     业务场景 分支处理冲突
     ask   $ git rebase master
     再交给住分支合并
     master $ git merge  ask
 
-
-    将某段提交移动到另外分支种
-    1.git rebase id1 id2 --onto branch_name
-    2.git checkout branch_name
-    3.git reset --hard 步骤2 提示的id
 

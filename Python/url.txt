@@ -1,2 +1,162 @@
-//路飞学城 Eva_J 讲师 笔记
-http://www.cnblogs.com/Eva-J/
+#//路飞学城 Eva_J 讲师 笔记
+#http://www.cnblogs.com/Eva-J/
+
+
+# 接口 用来约束子类  必须实现父类的方法
+from abc import abstractclassmethod,ABCMeta
+class Test(metaclass=ABCMeta):#默认 metaclass = type
+	@abstractclassmethod
+	def pay(self,money):
+		raise NotImplemented
+
+# @property  
+# name.setter 需要  先@property  3个name 同名
+# name.deleter 需要  先@property  3个name 同名
+class Test2(metaclass=ABCMeta):#默认 metaclass = type
+	def __init__(self,name):
+		self.__name = name
+
+	@property
+	def name(self):
+		return self.__name
+
+	@name.setter
+	def name(self,name):
+		self.__name = name
+	@name.deleter
+	def name(self):
+		del self.__name
+
+class Test3(Test2):
+	def __init__(self,name):
+		super().__init__(name)
+
+# t = Test3('zero')
+# print(t.name)
+# t.name = 123
+# print(t.name)
+# del t.name
+# print(t.name)
+# 
+# @ classmethod  staticmethod
+class Test4:
+	discount = 0.5
+	def __init__(self,name,price):
+		self.__name = name
+		self.__price = price
+
+	@property
+	def price(self):
+		return self.__price * Test4.discount
+
+	@classmethod
+	def change_discount(cls,new_dis):
+		print(cls)
+		cls.discount = new_dis
+
+# t = Test4('apple',5)
+# t1 = Test4('apple',5)
+# print(t.price)
+
+# Test4.change_discount(6)
+# print(t.price)
+# print(t1.price)
+
+
+# 内置的方法
+
+# __str__
+# __repr__
+# __del__
+class A:
+	def __repr__(self):
+		return 'A_class'
+	def __repr__(self):
+		return 'A_str_class'
+	def __del__(self):
+		print('执行完了')
+# a = A()
+# print(repr(a))
+
+# __call__
+class A:
+	def __call__(self,name):
+		print('执行call %s' %name)
+# a = A()
+# a('zero')
+
+# __getitem__(self)
+# __setitem__(self)
+# __delitem__(self)
+
+class Foo:
+	def __init__(self,name,age,sex):
+		self.name = name
+		self.age = age
+		self.sex = sex
+	def __getitem__(self,item):
+		if hasattr(self,item):
+			return self.__dict__[item]
+
+	def __setitem__(self,key,value):
+		self.__dict__[key] = value
+
+	def __delitem__(self,item):
+		if hasattr(self,item):
+			del self.__dict__[item]
+
+
+# f = Foo('zero',18,'男')
+# print(f['name'])
+# f['test'] = 1
+# print(f['test'])
+# del f['test']
+# print(f['test'])
+
+
+# __new__ 构造方法
+# 单例模式
+class A:
+	__ = None
+	def __init__(self,x):
+		self.x = x
+		
+	def __new__(cls,*args,**kargs):
+		if cls.__ :
+			return cls.__
+		cls.__ = object.__new__(cls)
+		return cls.__
+		
+
+a1 = A(1)
+a2 = A(2)
+print(a1)
+print(a2)
+print(a1.x)
+print(a2.x)
+
+
+# __eq__
+# 
+class A:
+	def __init__(self,name):
+		self.name = name
+	def __eq__(self,target): # 未实例前 默认比较地址
+		return self.__dict__ == target.__dict__
+
+# o1 = A('zero')
+# o1.t = 11
+# o2 = A('zero')
+# o2.t = 22
+# print(o1 == o2)
+
+# __hash__
+class A:
+	def __init__(self,name):
+		self.name = name
+	def __hash__(self): # 未实例前 默认比较地址
+		return hash(self.name)
+		
+
+print(hash(A('zero')))
+print(hash(A('zero')))
