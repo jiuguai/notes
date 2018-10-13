@@ -1,5 +1,6 @@
+
 1.交换
-  
+
     Ctrl+Shift+↑ 与上行互换
     Ctrl+Shift+↓ 与下行互换  
     Ctrl+T 词互换

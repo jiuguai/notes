@@ -1,40 +1,26 @@
 
-[TOC]
-
-<style>
-    h2{
-        color:#333;
-    }
-    h3{
-        color:#333;
-    }
-    table{
-        margin-left:150px;
-  
-    }
-</style>
-<br>
-****
-
-[插件地址](https://packagecontrol.io/ "sublime 插件地址")
+>[插件地址](https://packagecontrol.io/ "sublime 插件地址")
 
 ## 快捷键配置
 settings default
+
+```python
     {
-        "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+        //"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
         "font_size": 17,
         "ignored_packages":
         [
-            "Markdown",
+           // "Markdown",
             "Vintage"
         ],
         "update_check": false,
     }
+```
 
 ### Ctranslator
     翻译插件
 
-### 1.eol 表示行尾  bol表示行末
+### eol 表示行尾  bol表示行末
 ```python
     { 
         "keys": ["ctrl+4"], 
@@ -60,12 +46,12 @@ settings default
         1)修改源文件
         2)扩展源文件
     
-### 2.Terminal：打开一个命令窗口，用于各种命令操作
+### 2. Terminal：打开一个命令窗口，用于各种命令操作
     
     1)修改快捷键
 
         Preferences > 浏览插件 > Default (SYS_TYPE).sublime-keymap > ...
-        { "keys": ["ctrl+shift+y"], "command": "open_terminal" }
+        { "keys": ["ctrl+k","ctrl+t"], "command": "open_terminal" }
 
 ### 3.AutoPep8：
 
@@ -77,10 +63,16 @@ settings default
     1) Anaconda.sublime-settings 设置
         "swallow_startup_errors": true,
     2) user 配置
+    {
         "python_interpreter":"E:/Python/Python36/python.exe",
         "suppress_word_completions":true, 
         "suppress_explicit_completions":true,
         "comlete_parameters":true 
+    }
+    3)default
+    {
+        "anaconda_linting": false,
+    }
     3)项目 > 空间另存为
         settings 中选择虚拟环境路径 
 
@@ -98,16 +90,7 @@ settings default
         } 
 
 ### 6.emmet
-
     通过 Package​Resource​Viewer snippets.json
-
-### 7.MarkdownEditing
-    
-    设置 Change color scheme
-    参照 Markdown GFM Settings - Defaults 添加如下到 Markdown GFM Settings - User
-        "draw_centered": false,
-        "wrap_width": 120,
-        "line_numbers": true,
 
 ### 8.vintageous 
 
@@ -193,14 +176,21 @@ settings default
     ii. 再安装 SublimeLinter-csslin 插件
 
 
-### 14. a file Icon
+### 15. a file Icon
 
-### 15. HTML-CSS-JS Prettify
+### 16. HTML-CSS-JS Prettify
     自动格式化   配置node路径
 
-### 16.Markdow 插件
+### 17. Markdow 插件
 
     1.MarkdownEditing
+        参照 Markdown GFM Settings - Defaults 添加如下到 Markdown GFM Settings - User
+        {
+            "draw_centered": false,
+            "wrap_width": 120,
+            "line_numbers": true,
+            "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme"
+        }
 
     2.Markdown Extended
 
@@ -208,18 +198,18 @@ settings default
 
 ```python
         #绑定快捷键：快速打开浏览器
-        { "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"}  }     
+        { "keys": ["f5"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"}  }     
 ```
 
     4. OmniMarkupPreviewer
 
 ```python   
-        #防止第二次404   
-        {
-            "renderer_options-MarkdownRenderer": {
-                "extensions": ["tables", "fenced_code", "codehilite"]
-            }
+    #防止第二次404   
+    {
+        "renderer_options-MarkdownRenderer": {
+            "extensions": ["tables", "fenced_code", "codehilite"]
         }
+    }
 ```
 
 ### 17.SublimeCodeIntel
@@ -235,7 +225,10 @@ settings default
         }
     }
 
-### 18.SideBarEnhancements
+### 18.project manager
+    管理项目
+
+### 19.SideBarEnhancements
 ```python
         //ResourceView >Theme-Default>Default.sublime-theme
            //调整为
@@ -400,5 +393,5 @@ settings default
             },
 ```
 
-### 18.待加入
-    jQuery/nodejs/JSFormat/ConverUTF-8/GBKSupport/javascript & nodejs snipptes
+### 待加入
+    jQuery/nodejs/JSFormat/ConverToUTF-8/GBKSupport/javascript & nodejs snipptes

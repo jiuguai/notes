@@ -1,38 +1,66 @@
-import pymongo
+import pymysql
 
-# 连接
-cli = pymongo.MongoClient("127.0.0.1",port=27017)
+conn = pymysql.connect(
+	host="localhost",user="root",
+	password="root",database="test",
+	port=3306,
+)
+cursor = conn.cursor()
+# 查询
+count = cursor.execute("select * from user")
+print(count)
+result = cursor.fetchone()
+print(result)
+result = cursor.fetchmany(2)
+print(result)
+result = cursor.fetchall()
+print(result)
 
-# 创建数据库
-db = cli.zhihu
+sql = """
+	insert into user(name,age) values(%s,%s)
+"""
+cursor.execute(sql,('dog',3))
 
-# 创建集合
-collection = db.qa
-
-# 添加
-collection.insert([{"username":"zero",'type':1},
-	{"username":"wind",'type':2}
-
-	])
-collection.insert({"user":"zero"})
-
-# 查找数据
-## 返回多条
-cursor = collection.find({'username':"zero"})
-print(list(cursor))
-## 返回一条
-data1 = collection.find_one({'user':"zero"})
-print(data1)
-
-# 更新
-collection.update_one({"user":"zero"},{"$set":{"age":18,"type":"test"}})
-collection.update_many({"username":"zero"},{"$set":{"age":18}})
-
-# 删除
-collection.delete_one({"usernam":"zero"})
-collection.delete_many({"usernam":"zero"})
-cli.close()
+# 删除 更新 添加 都需要提交
+conn.commit()
+conn.close()
 
 
 
 
+#查询
+# count = cursor.execute("select * from user")
+# print(count)
+# result = cursor.fetchone()
+# print(cursor)
+# print(result)
+# result = cursor.fetchmany(2)
+# print(result)
+
+# result = cursor.fetchall()
+# print(result)
+
+
+# 插入数据
+# try:
+# 	sql = """
+# 	insert into user(name,age) values(%s,%s)
+# 	"""
+# 	cursor.execute(sql,('dog',3))
+# 	conn.commit()
+
+
+# 	conn.close()
+# 	print('成功')
+# except Exception:
+# 	print('失败')
+# 	conn.close()
+
+#删除
+# sql = """
+# 	delete from user where id=%s
+# """
+# cursor.execute(sql,(4))
+# conn.commit()
+
+# conn.close()
