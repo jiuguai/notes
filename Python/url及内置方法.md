@@ -1,8 +1,9 @@
->路飞学城 Eva_J 讲师 笔记
 
-> [Eva_J讲师](http://www.cnblogs.com/Eva-J/)
+> [随笔](http://www.cnblogs.com/Eva-J/)
 
-> [Python之路](https://www.cnblogs.com/Eva-J/category/1030165.html)
+> [文章](https://www.cnblogs.com/Eva-J/category/1030165.html)
+
+> [mysql](https://www.cnblogs.com/Eva-J/p/5133716.html)
 
 ## 接口 用来约束子类  必须实现父类的方法
 ```python
@@ -13,12 +14,12 @@
 			raise NotImplemented
 ```
 
-## @property  
++ @property  
 + name.setter 需要  先@property  3个name 同名
 + name.deleter 需要  先@property  3个name 同名
 
 ```python
-	class Test2(metaclass=ABCMeta):#默认 metaclass = type
+	class Test2()
 		def __init__(self,name):
 			self.__name = name
 
