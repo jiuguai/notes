@@ -14,6 +14,7 @@ settings default
             "Vintage"
         ],
         "update_check": false,
+        "word_wrap":true
     }
 ```
 

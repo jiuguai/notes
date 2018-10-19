@@ -31,6 +31,11 @@ result = parse.parse_qs(result)
 print(type(result))
 print(result)
 
+quote = parse.quote('我')
+print(quote)
+print(parse.unquote(quote))
+
+
 print(parse.quote_from_bytes('age 我'.encode()))
 
 
