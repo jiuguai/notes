@@ -1,5 +1,8 @@
 
->[插件地址](https://packagecontrol.io/ "sublime 插件地址")
+>[插件地址](https://packagecontrol.io/ )
+
+>[sublime Text 非官方文档](https://sublime-text.readthedocs.io/en/latest/reference/build_systems.html)
+
 
 ## 快捷键配置
 settings default
@@ -13,8 +16,10 @@ settings default
            // "Markdown",
             "Vintage"
         ],
+        "theme": "Default.sublime-theme",
         "update_check": false,
-        "word_wrap":true
+        "word_wrap":true,
+        "auto_complete_commit_on_tab": true,
     }
 ```
 

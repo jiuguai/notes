@@ -1,4 +1,8 @@
 ## 安装
+
+>[高级查询](https://www.jb51.net/article/48216.htm)
+
+
 #### 1.MongoDB
 #### 2.MongoDB Compass : 与MongoDB分开安装
 

@@ -1,6 +1,7 @@
 #coding:utf-8
 from urllib import request , parse
-url = 'http://www.baidu.com/s;hellow?wd=Python&username=abc#1'
+
+url = 'http://www.baidu.com/home/s;hellow?wd=Python&username=abc#1'
 result = parse.urlparse(url)
 print(result)
 print('scheme:',result.scheme)
@@ -18,3 +19,8 @@ print('path:',result.path)
 
 print('query:',result.query)
 print('fragment:',result.fragment)
+
+
+
+url = parse.urljoin("https://"+result.netloc,result.path)
+print(url)
