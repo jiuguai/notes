@@ -3,6 +3,7 @@
 
 >[sublime Text 非官方文档](https://sublime-text.readthedocs.io/en/latest/reference/build_systems.html)
 
+>[API](https://www.sublimetext.com/docs/3/api_reference.html)
 
 ## 快捷键配置
 settings default

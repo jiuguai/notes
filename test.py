@@ -1,6 +1,11 @@
-from urllib.parse import quote,unquote
-import time
-print(time.time())
+import hmac
+import hashlib
 
-1540899785.2514346
-315360000
+s = 'wezero'
+h = hmac.new(key=b'come',msg=b'first',digestmod='md5')
+h.update(s.encode())
+print(h.digest())
+print(h.hexdigest())
+
+
+print(bytes((x ^ 0x36) for x in range(256)))

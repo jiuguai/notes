@@ -13,7 +13,8 @@
     1. wheel:pip install wheel
     2. lxml:pip install lxml
     3. pyOpenssl :pip install wheel
-    4. [Twisted](https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted): 
+    4. pip3 install pillow(非必须下载图片有用)
+    5. [Twisted](https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted): 
 点击链接下载 wheel文件本地安装
     5. [Pywin32](https://sourceforge.net/projects/pywin32/files/pywin32/)
 点击链接下载
@@ -92,14 +93,31 @@ cmdline.execute("scrapy crawl qs".split(' '))
 
 
 ### 模块
-+ 数据处理
-    + linkextractors
-        + LinkExtractor
-    + Rule
++ **数据处理**
     + scrapy.exporters
         + JsonLinesItemExporter
         + JsonItemExporter
         + CsvItemExporter
++ **Crawl 模版** 
+    + linkextractors
+        + LinkExtractor
+    + spiders
+        + Rule
+        + CrawlSpider
++ **文件下载模块**
+    + 安装 pillow 库
+        + pip3 install pillow
+    + Files Pipeline
+        1. 在Item 中定义 file_urls files属性
+        2. 文件下载完成之后，会把文件下载的相关信息存放到item 的files中，如：下载路径、url、校验码
+        3. 在settings.py 中配置 FILES_STORE,这个配置用来设置问价下载路径
+        4. 启动pipeline: 在ITEM_PIPLINES 中设置 'scrapy.pipelines.files.FilesPipeline':100
+    + Image Pipeline
+        1. 在Item 中定义 image_urls images属性
+        2. 文件下载完成之后，会把文件下载的相关信息存放到item 的files中，如：下载路径、url、校验码
+        3. 在settings.py 中配置 FILES_STORE,这个配置用来设置问价下载路径
+        4. 启动pipeline: 在ITEM_PIPLINES 中设置 'scrapy.pipelines.images.ImagesPipeline':100
+    
 ```python
         # JsonLinesItemExporter 来一条存一条
         from scrapy.exporters import JsonLinesItemExporter
@@ -130,6 +148,10 @@ cmdline.execute("scrapy crawl qs".split(' '))
                 self.fp.close()
                 print('爬虫结束')
 ```
+
+### Scrapy Shell
+1. 进入项目(可以读取配置信息，也可以不进入)
+2. 输入 scrapy shell url
 
 
 
