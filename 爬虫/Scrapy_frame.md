@@ -5,6 +5,16 @@
 
 >[测试](>http://quotes.toscrape.com/)
 
+### commands
++ settings 
+    + scrapy settings --get=DOWNLOADER_MIDDLEWARES_BASE
+    + scrapy settings --get=SPIDER_MIDDLEWARES_BASE
+
+
+
+### 异步锁
++ twisted
+    + from twisted.internet.defer import DeferredLock
 
 
 ### 安装
@@ -101,12 +111,33 @@ cmdline.execute("scrapy crawl qs".split(' '))
 + **Crawl 模版** 
     + linkextractors
         + LinkExtractor
+```md
+FilteringLinkExtractor(allow=(), deny=(), allow_domains=(), deny_domains=(), restrict_xpaths=(),
+                 tags=('a', 'area'), attrs=('href',), canonicalize=False,
+                 unique=True, process_value=None, deny_extensions=None, restrict_css=(),
+                 strip=True)
+
+实例化后：restrict_css -> restrict_xpaths or response.selector
+然后按照以下顺序寻找满足条件的urls:
+targs
+attrs
+process_value
+unique：docs 中子文档 外加canonicalize 条件
+allow
+deny
+allow_domains
+deny_domains
+deny_extensions
+unique:docs 合并后
+```
     + spiders
         + Rule
         + CrawlSpider
 + **文件下载模块**
     + 安装 pillow 库
         + pip3 install pillow
+    + settings(存储目录)
+        + IMAGES_STORE = r'F:\images\cars\bmw5'
     + Files Pipeline
         1. 在Item 中定义 file_urls files属性
         2. 文件下载完成之后，会把文件下载的相关信息存放到item 的files中，如：下载路径、url、校验码
@@ -149,9 +180,7 @@ cmdline.execute("scrapy crawl qs".split(' '))
                 print('爬虫结束')
 ```
 
-### Scrapy Shell
-1. 进入项目(可以读取配置信息，也可以不进入)
-2. 输入 scrapy shell url
+
 
 
 

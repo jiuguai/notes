@@ -26,6 +26,11 @@ settings default
 
 ### Ctranslator
     翻译插件
+    
+
+### local history
+    本地歷史記録
+
 
 ### eol 表示行尾  bol表示行末
 ```python
@@ -65,21 +70,54 @@ settings default
     python开发规范pep8 [ctrl+shift+r]
 
 ### 4.Anaconda：
+    + 安装好 project manager ，选择编辑项目
 
-    自动匹配关键字等实用功能，有效提高开发效率
-    1) Anaconda.sublime-settings 设置
-        "swallow_startup_errors": true,
-    2) user 配置
+```js
     {
-        "python_interpreter":"E:/Python/Python36/python.exe",
-        "suppress_word_completions":true, 
-        "suppress_explicit_completions":true,
-        "comlete_parameters":true 
+        "build_systems":
+        [
+            {
+                "env":
+                {
+                    "PYTHONIOENCODING": "utf-8"
+                },
+                "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+                "name": "Anaconda Python Builder Crawler",
+                "selector": "source.python",
+                "variants":
+                [
+                    {
+                        "name": "Syntax Check",
+                        "shell_cmd": "\"E:/Python/WorkEnvs/scrapy3/Scripts/python.exe\" -u \"$file\""
+                    }
+                ]
+            },
+            {
+                "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+                "name": "Anaconda Python Builder",
+                "selector": "source.python",
+                "shell_cmd": "\"E:/Python/Python36/python.exe\" -u \"$file\""
+            }
+        ],
+        "folders":
+        [
+            {
+                "path": "F:\\crawler"
+            }
+        ],
+        // "settings":
+        // [
+        //  {
+        //      "anaconda_linting": false,
+        //      "comlete_parameters": true,
+        //      "python_interpreter": "E:/Python/WorkEnvs/scrapy3/Scripts/python.exe",
+        //      "suppress_explicit_completions": true,
+        //      "suppress_word_completions": true,
+        //      "swallow_startup_errors": true
+        //  }
+        // ]
     }
-    3)default
-    {
-        "anaconda_linting": false,
-    }
+```
     3)项目 > 空间另存为
         settings 中选择虚拟环境路径 
 

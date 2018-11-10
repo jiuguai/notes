@@ -1,7 +1,10 @@
 ## 安装
 
+>[基本命令](https://www.cnblogs.com/wpjzh/p/5999363.html)
+
 >[高级查询](https://www.jb51.net/article/48216.htm)
 
+>[官方文档](https://docs.mongodb.com/manual/)
 
 #### 1.MongoDB
 #### 2.MongoDB Compass : 与MongoDB分开安装

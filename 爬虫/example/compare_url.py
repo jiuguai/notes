@@ -1,7 +1,14 @@
 from urllib.parse import parse_qs,urlparse
 import json
 
-class ParseURLQuery:
+
+
+def beautiful_collections(colle,indent=4):
+	s = json.dumps(colle,indent=4)
+	return s
+
+
+class URLQueryDiff:
 	__map = {
 		'furl':'fq',
 		'surl':'sq'
@@ -11,9 +18,6 @@ class ParseURLQuery:
 		self.surl = surl
 		
 
-	def get_json(self,indent=4):
-		s = json.dumps(self.diff,indent=4)
-		self.diff_beauty = s
 
 	def query_diff(self):
 		d = {
@@ -34,20 +38,20 @@ class ParseURLQuery:
 			d['sq_unique'][k] = self.sq[k]
 
 		self.diff = d
-		self.get_json()
+		self.diff_beauty = beautiful_collections(self.diff)
 
 
 	@staticmethod
 	def parse_query(url,dropli=True):
 		ParseResult = urlparse(url)
 		d = parse_qs(ParseResult.query)
-		def drop_li(v):
+		def remove_li(v):
 			if isinstance(v,(list,tuple)):
 				return ','.join(v)
 			return v
 		
 		if dropli:
-			return {k:drop_li(d[k]) for k in d}
+			return {k:remove_li(d[k]) for k in d}
 		return d
 
 	def __repr__(self):
@@ -72,7 +76,7 @@ class ParseURLQuery:
 
 
 
-PUQ = ParseURLQuery
+UQD = URLQueryDiff
 
 
 url1 = 'https://data.bilibili.com/v/flashplay/h5_player_op?pname=6&mid=236367692&statue=3&playmethod=2&avid=25296249&eventparam=464&progress=327&displayid=85fae993b2e8407043041d226940d6b8&eventid=http_connection_time&trackerid=&cid=42859600&fver=HTML5PlayerNewccf43e3&seasonid=&epid=&videotype=1&fid=web_player&ctime=1541777708655&readystate=1'
@@ -81,24 +85,8 @@ url1 = 'https://data.bilibili.com/v/flashplay/h5_player_op?pname=6&mid=236367692
 url2 = 'https://data.bilibili.com/v/flashplay/h5_player_op?pname=6&mid=236367692&statue=3&playmethod=2&avid=25296249&eventparam=6349&progress=227&displayid=85fae993b2e8407043041d226940d6b8&eventid=end_load&trackerid=&cid=42859600&fver=HTML5PlayerNewccf43e3&seasonid=&epid=&videotype=1&fid=web_player&ctime=1541777449105&readystate=4'
 
 url3 = 'https://data.bilibili.com/v/flashplay/h5_player_op?pname=6&mid=236367692&statue=3&playmethod=2&avid=25296249&eventparam=6349&progress=227&displayid=85fae993b2e8407043041d226940d6b8&eventid=end_load&trackerid=&cid=42859600&fver=HTML5PlayerNewccf43e3&seasonid=&epid=&videotype=1&fid=web_player&ctime=1541777449105&readystate=3'
-p = PUQ(url1,url2)
+p = UQD(url1,url2)
 print(p)
 p.surl = url3
 print(p)
-# fq = parse_query(url1)
-# sq = parse_query(url2)
-# print(fq)
-# print(sq)
-
-
-	
-# fq = {k:drop_li(fq[k]) for k in fq}
-# sq = {k:drop_li(fq[k]) for k in sq}
-# print('='*30)
-# print(fq)
-# print(sq)
-
-# d = query_diff(fq,sq)
-# s = get_json(d)
-# print(s)
 

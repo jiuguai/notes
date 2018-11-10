@@ -5,7 +5,21 @@
 
 ![imge](git工作流程图.png)
 
-****
+***
+
+### 文件
++ .ignore
++
+```bash
+[remote "origin"]
+    url = https://github.com/jiuguai/test.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+
+```
+
 ### 初始化配置
 
     git config --global user.name zero
