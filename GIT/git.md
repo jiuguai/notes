@@ -8,6 +8,24 @@
 ***
 
 ### 命令（常用）
++ reset
+    + 参数 
+        + --mixed HEAD~ (默认)
+            + 会回滚到暂存仓库
+        + --soft HEAD~
+            + 只将仓库指针指向上一次
+        + --hard HEAD~
+            + 会回滚到暂存仓库和工作区
+    + git reset 快照版本（快照hash） 目录/文件
++ diff
+    + 默认比较 暂存区 和 工作区
+    + git diff ID1(旧 - 红) ID2(新 - 绿)  # 白色代表共有
+    + git diff ID  # 已往版本与工作区域的比较
+    + git diff --cached  ID# 
++ checkout
+    + checkout 
++ reflog
+    + 所有提交记录
 + log
     + 参数
         + -p            # 列出变动信息
@@ -30,8 +48,12 @@
     + git branch -D bran_name   # 大写D 强制删除未合并过的分支
     + git branch --merged       # 查看已经合并的分支
     + git branch --no-merged
+    + git branch -m old new
 + rm
     + git rm --cached *.py
+    + git rm -f *.py            # 强制删除
++ mv
+    + git mv old new
 + merge
     + git merge bran_name
 + stash
@@ -60,20 +82,20 @@ git push --set-upstream origin ask # 提交分支
 git clone git_project_url
 git pull origin ask:ask  # 将远程ask分支 拉到本地ask中
 
-# 合并远程分支
+#-*- 合并远程分支 -*-
 # 以 ask 分支为例
-git checkout master`
+git checkout master
 # 更新远程主分支
 git pull
-git checkout ask
 # 将ask 分支的基分支合为当前最新住分支
+git checkout ask
 git rebase master
-git checkout master
 # 合并主分支
+git checkout master
 git merge ask
 git push
 
-# 删除远程分支
+#-*- 删除远程分支 -*-
 # 以 ask 分支为例
 git push origin --delete ask
 ```
@@ -157,64 +179,6 @@ git config --global alias.a add
             merge = refs/heads/master
 
 
-
-******
-### 命令
-####git add
-
-    git add filename 
-    git add .           #不包括删除文件
-    git add -u          #不会提交新文件
-    git add -A          #. -u 的综合体
-    git add *.txt
-
-
-####git commit
-
-    git commit -m 'first'
-    git commit -m 'second' test.txt
-
-
-    //一次性提交
-    git commit -am 'headname' [filenames]
-  
-    //修正上一次提交
-    git commit --amend 
-    //追加
-    git commit -C head -a --amend
-
-    //查看提交信息
-    git log
-    git log --oneline
-
-####git reset
-    git reset --[mixed|soft|hard] HEAD~5
-    git reset 7f33013
-
-    回滚文件 HEAD 指针不移动
-
-#### git diff
-    比较工作区和暂存区
-    git diff
-
-    比较两个快照
-    git diff 7f33013 7fwd013
-
-    工作区和快照比较
-    git diff 7f33013
-
-    暂存区与快照比较
-    git --cached [7f33013]
-
-#### git rm
-    git rm filename
-    git rm --cached filename
-    git rm -f filename
-
-
-#### git mv
-    git mv oldfile newfile
-
 #### git checkout
 
     从暂存区还原到工作区 
@@ -246,22 +210,9 @@ git config --global alias.a add
     //删除stash
     git stash drop stash@{num}
 
-####   删除      
-    //切换到另一个分支才可以删除
-    git branch -d dev
-    
-#### 修改分支名
-    git branch -m dev fix_name
 
-####git merge
-    git  merge dev [--no-commit]
-    解决冲突后
-    git commit -am 'mergeversion'
-####git rebase  
-    #replace base
-    业务场景 分支处理冲突
-    ask   $ git rebase master
-    再交给住分支合并
-    master $ git merge  ask
+
+
+
 
 

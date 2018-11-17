@@ -1,8 +1,6 @@
 from urllib.parse import parse_qs,urlparse
 import json
 
-
-
 def beautiful_collections(colle,indent=4):
 	s = json.dumps(colle,indent=4)
 	return s

@@ -5,6 +5,17 @@
 
 >[API](https://www.sublimetext.com/docs/3/api_reference.html)
 
+>[linux 安装](http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html)
+
+## 安装
++ linux
+```bash
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get install sublime-text-installer
+```
+
+
 ## 快捷键配置
 settings default
 
@@ -21,13 +32,16 @@ settings default
         "update_check": false,
         "word_wrap":true,
         "auto_complete_commit_on_tab": true,
+        "vintage_start_in_command_mode": true
     }
 ```
 
 ### Ctranslator
     翻译插件
     
-
+### Vintageous
+    
+    
 ### local history
     本地歷史記録
 
