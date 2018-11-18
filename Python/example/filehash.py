@@ -26,7 +26,7 @@ class FileHash:
 		self.run()
 		return self.hexdigest
 
-
-file_path = r'C:\Users\zero\Desktop\python_传智播客_目录.md'
-fh = FileHash(file_path)
-print(fh)
+if __name__ == '__main__':
+	file_path = r'C:\Users\zero\Desktop\python_传智播客_目录.md'
+	fh = FileHash(file_path)
+	print(fh)

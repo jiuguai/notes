@@ -37,7 +37,7 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 				j -- 使用bzip2格式压缩文件
 			压缩
 				tar zcvf tarname.tar.gz 文件或目录
-				tar jzvf tarname.tar.bz2 文件或目录
+				tar jcvf tarname.tar.bz2 文件或目录
 			解压
 				tar zxvf tarname.tar.gz -C 文件或目录
 				tar jxvf tarname.tar.bz2 -C 文件或目录
