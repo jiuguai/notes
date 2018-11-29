@@ -1,3 +1,5 @@
+[normalize](https://www.bootcdn.cn/normalize/)
+
 1.核心函数
 1)each()
 2)size()
@@ -176,7 +178,7 @@ show(speed [,fn])
 hide(speed [,fn])
 toggle(speed [,fn])
 2)滑动
-slideDown(speed [,fn])
+slideDown(speed [,fn])	  
 slideUp(speed [,fn])
 slideToggle(speed [,fn])
 3)淡入淡出
@@ -190,7 +192,7 @@ animate({'width':'0px'},600,function(){$(this).hide()})
 14.Ajax
 1)Ajax请求
 get(url,param,fn)
-post(url,,param,fn)
+post(url,param,fn)
 2)Ajax工具
 serialize() 	序列化
 

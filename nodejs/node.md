@@ -1,4 +1,5 @@
 **数据转换**
+
     util.inspect()  //json转换为字符串
     querystring.parse(url.parse(req.url)) //将请求的查询字符串转为json对象
     

@@ -32,7 +32,7 @@ settings default
         "update_check": false,
         "word_wrap":true,
         "auto_complete_commit_on_tab": true,
-        "vintage_start_in_command_mode": true
+        # "vintage_start_in_command_mode": true
     }
 ```
 
@@ -45,6 +45,11 @@ settings default
 ### local history
     本地歷史記録
 
+### AdvancedNewFile
+
+### docblockr
+
+### docblockr_python
 
 ### eol 表示行尾  bol表示行末
 ```python
@@ -98,20 +103,11 @@ settings default
                 "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
                 "name": "Anaconda Python Builder Crawler",
                 "selector": "source.python",
-                "variants":
-                [
-                    {
-                        "name": "Syntax Check",
-                        "shell_cmd": "\"E:/Python/WorkEnvs/scrapy3/Scripts/python.exe\" -u \"$file\""
-                    }
-                ]
+                
+                "shell_cmd": "\"E:/Python/WorkEnvs/scrapy3/Scripts/python.exe\" -u \"$file\""
+            
             },
-            {
-                "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-                "name": "Anaconda Python Builder",
-                "selector": "source.python",
-                "shell_cmd": "\"E:/Python/Python36/python.exe\" -u \"$file\""
-            }
+            
         ],
         "folders":
         [
@@ -131,6 +127,7 @@ settings default
         //  }
         // ]
     }
+
 ```
     3)项目 > 空间另存为
         settings 中选择虚拟环境路径 
