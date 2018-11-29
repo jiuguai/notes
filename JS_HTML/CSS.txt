@@ -1,3 +1,9 @@
+[BootCDN](https://www.bootcdn.cn/)
+
+[fontawesome](https://fontawesome.com/v4.7.0/icons/)
+
+[动画曲线](https://easings.net/zh-cn)
+
 一、选择器类型
 1.1常用选择器
 	1)标签选择器
@@ -21,7 +27,7 @@
 	1):hover
 	2):focus
 	3)::selection
-	.
+	
 1.5属性选择器
 	1)[id]
 	2)[id=use1]

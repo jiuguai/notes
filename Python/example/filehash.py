@@ -23,7 +23,8 @@ class FileHash:
 		self.hexdigest = self.hash.hexdigest()
 
 	def __repr__(self):
-		self.run()
+		if 'hexdigest' not in self.__dict__:
+			self.run()
 		return self.hexdigest
 
 if __name__ == '__main__':

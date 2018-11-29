@@ -46,7 +46,7 @@
 1. **创建项目**
     + scrapy startproject [项目名称]
 2. **创建一个爬虫**
-    + scrapy genspider [mydomain] "qiushibaike.com"
+    + scrapy genspider [crawle_name] "qiushibaike.com"
 3. **运行爬虫**
     + scrapy crawl spider_name
 4. **项目目录** 
@@ -55,7 +55,7 @@
 1. **创建项目**
     + scrapy startproject [项目名称]
 2. **创建一个爬虫**
-    + scrapy genspider -t crawl [mydomain] "qiushibaike.com"
+    + scrapy genspider -t crawl [crawler_name] "qiushibaike.com"
 3. **运行爬虫**
     + scrapy crawl spider_name
 
@@ -119,10 +119,11 @@ FilteringLinkExtractor(allow=(), deny=(), allow_domains=(), deny_domains=(), res
 
 实例化后：restrict_css -> restrict_xpaths or response.selector
 然后按照以下顺序寻找满足条件的urls:
+restrict_xpaths  # restrict_css -> restrict_xpaths
 targs
 attrs
 process_value
-unique：docs 中子文档 外加canonicalize 条件
+unique：docs 中子文档 外加canonicalize=false 条件
 allow
 deny
 allow_domains

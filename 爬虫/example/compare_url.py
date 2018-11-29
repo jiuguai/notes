@@ -1,22 +1,49 @@
-from urllib.parse import parse_qs,urlparse
+from urllib.parse import parse_qs, urlparse, parse_qsl
 import json
 
 def beautiful_collections(colle,indent=4):
 	s = json.dumps(colle,indent=4)
 	return s
 
+def parse_query(url,dropli=True):
+		"""解析url
+		
+		将url中的query字段解析出来
+		
+		Arguments:
+			url {string} -- 需要解析的url
+		
+		Keyword Arguments:
+			dropli {bool} -- 使用urllib 中parse_qs 解析出来的结果默认为列表 (default: {True})
+		
+		Returns:
+			dict -- 将键值对以字典形式返回
+		"""
+		ParseResult = urlparse(url)
+		d = parse_qs(ParseResult.query)
+		def remove_li(v):
+			if isinstance(v,(list,tuple)):
+				return ','.join(v)
+			return v
+		
+		if dropli:
+			return {k:remove_li(d[k]) for k in d}
+		return d
 
 class URLQueryDiff:
+	"""
+	解析比较两URL query 字段
+
+	"""
 	__map = {
 		'furl':'fq',
 		'surl':'sq'
 	}
+
 	def __init__(self,furl,surl):
 		self.furl = furl
 		self.surl = surl
 		
-
-
 	def query_diff(self):
 		d = {
 			'fq_sq_diff':{},
@@ -39,18 +66,7 @@ class URLQueryDiff:
 		self.diff_beauty = beautiful_collections(self.diff)
 
 
-	@staticmethod
-	def parse_query(url,dropli=True):
-		ParseResult = urlparse(url)
-		d = parse_qs(ParseResult.query)
-		def remove_li(v):
-			if isinstance(v,(list,tuple)):
-				return ','.join(v)
-			return v
-		
-		if dropli:
-			return {k:remove_li(d[k]) for k in d}
-		return d
+	
 
 	def __repr__(self):
 
@@ -60,7 +76,7 @@ class URLQueryDiff:
 	def __setattr__(self,name,value):
 		if name in self.__map.keys():
 			self.__dict__[name] = value
-			self.__dict__[self.__map[name]] = self.parse_query(value)
+			self.__dict__[self.__map[name]] = parse_query(value)
 			if 'furl' in self.__dict__ and 'surl' in self.__dict__:
 				self.query_diff()
 
@@ -69,19 +85,24 @@ class URLQueryDiff:
 
 
 
+if __name__ == '__main__':
+	UQD = URLQueryDiff
 
+	url1 = 'https://note.youdao.com/yws/api/group/10042410/file/187069773?method=download&inline=true&version=1&shareToken=A4EB9037044F4694B41708140F5A9FED'
 
+	url2 = 'https://note.youdao.com/yws/api/group/10042410/file/187069775?method=download&inline=true&version=1&shareToken=A4EB9037044F4694B41708140F5A9FED'
 
+	p = UQD(url1,url2)
+	print(p)
 
-
-UQD = URLQueryDiff
-
-
-url1 = 'https://cn-zjwz3-dx-v-07.acgvideo.com/upgcxcode/48/13/63401348/63401348-1-30080.m4s?expires=1542564600&platform=pc&ssig=YC5TzyDmgZwrOB4E5InNiA&oi=3740590929&hfb=Yjk5ZmZjM2M1YzY4ZjAwYTMzMTIzYmIyNWY4ODJkNWI=&trid=c2dc525ad1cd437d98525e04a61ba798&nfc=1'
-
-
-url2 = 'https://cn-zjwz3-dx-v-07.acgvideo.com/upgcxcode/48/13/63401348/63401348-1-30080.m4s?expires=1542564600&platform=pc&ssig=YC5TzyDmgZwrOB4E5InNiA&oi=3740590929&hfb=Yjk5ZmZjM2M1YzY4ZjAwYTMzMTIzYmIyNWY4ODJkNWI=&trid=c2dc525ad1cd437d98525e04a61ba798&nfc=1'
-
-p = UQD(url1,url2)
-print(p)
+	"""外部函数测试
+	
+	外部函数的返回值
+	"""
+	# q = urlparse(url1)
+	# print(q.query)
+	# x = parse_qs(q.query)
+	# print(x)
+	# x = parse_qsl(q.query)
+	# print(x)
 

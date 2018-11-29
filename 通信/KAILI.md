@@ -1,3 +1,4 @@
+[环境配置]('https://blog.csdn.net/just_h/article/details/76736087?utm_source=blogxgwz0')
 
 + 启动黑屏解决方案
     + 进入 引导界面 按e键
