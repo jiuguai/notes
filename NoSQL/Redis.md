@@ -36,12 +36,15 @@ sudo service redis-server stop
 ```
 
 #操作
+
+keys * 查看所有key
+
 ## 字符串操作
 set key value [EX ns]
 get key
 ttl key
 
-keys * 查看所有key
+
 
 ## 列表
 ```shell

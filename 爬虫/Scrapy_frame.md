@@ -5,17 +5,30 @@
 
 >[测试](>http://quotes.toscrape.com/)
 
+>[scrapyd-deploy命令讲解](https://piaosanlang.gitbooks.io/spiders/05day/section5.3.html)
+
+### scrapyd
++ scrapyd
+    
++ scrapyd_client
+    + Windows
+        * 安装curl
+        * scrapyd-deploy 文件 不能呗shell直接执行，需要新建scrapy-deploy.bat   
+            ```bash
+
+                @echo off
+                E:\Python\WorkEnvs\scrapy3\Scripts\python E:\Python\WorkEnvs\scrapy3\Scripts\scrapyd-deploy %*
+            ```
+
+
 ### commands
 + settings 
     + scrapy settings --get=DOWNLOADER_MIDDLEWARES_BASE
     + scrapy settings --get=SPIDER_MIDDLEWARES_BASE
 
-
-
 ### 异步锁
 + twisted
     + from twisted.internet.defer import DeferredLock
-
 
 ### 安装
 
@@ -34,6 +47,14 @@
 
     1. unbuntu:sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
     2. scapy：pip3 install scapy
+        1. ImportError: cannot import name main
+        
+            ```python
+
+                from pip import __main__
+                if __name__ == '__main__':
+                    sys.exit(__main__._main())
+            ```
 
 + **Mac OS**
     1. xcode-select --install

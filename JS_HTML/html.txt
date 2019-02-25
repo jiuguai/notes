@@ -1,3 +1,9 @@
+> 兼容性
+http://www.w3help.org/zh-cn/causes/   
+http://gucong3000.github.io/css-book/introduction/index.htm  
+http://www.lixuejiang.me/2016/10/11/%E6%88%91%E7%90%86%E8%A7%A3%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/
+
+
 实体字符
 	空格 	&nbsp;
 	“		&quot;
@@ -9,9 +15,9 @@
 meta 元素
 	描述文档的元数据
 	charset
-		<meta charset="UTF*8">
+		<meta charset="UTF-8">
 	content
-		配合 name http*equiv 使用
+		配合 name http-equiv 使用
 	name
 		descriiption
 			<meta name="description" content="网易云音乐是一款专注于发现与分享的音乐产品，依托专业音乐人、DJ、好友推荐及社交功能，为用户打造全新的音乐生活。">
@@ -19,23 +25,23 @@ meta 元素
 			<meta name="keywords" content="网易云音乐，音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，官网，music.163.com">
 		viewport
 			<!-- 移动端实用 -->
-			<meta name="viewport" content="width=device*width,initial*scale=1.0,maximum*scale=1,user*scalable=no">
-		application*name
+			<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+		application-name
 		author
 		generator
-		referrer
+		referrer  # 防盗链
 		<meta name="referrer" content="never">
-	http*equiv
+	http-equiv
 		可以定时刷新 和刷新后页面走向
 		refresh
-		content*language
-		content*type
-		default*style
-		set*cookie
-		X*UA*Compatible
+		content-language
+		content-type
+		default-style
+		set-cookie
+		X-UA-Compatible
 			网页呈现方式
-			保证其他浏览器展示效果一致
-			<meta http*equiv="Compatible" content="ie=edge">
+			保证 IE浏览器展示效果一致
+			<meta http-equiv="Compatible" content="ie=edge">
 
 样式插入
 	<link rel="stylesheet" href="style.css" type="text/css" media="all">

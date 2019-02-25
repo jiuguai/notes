@@ -38,6 +38,9 @@
         + -m            # 提交信息
         + -am           # 修改(不包括文件的添加)并且提交
         + --amend       # 追加上一次提交
+            + 网络提交
+                + git push --force-with-lease
+
 
 + branch
     + git branch -a             # 查看所有 包括远程分支 

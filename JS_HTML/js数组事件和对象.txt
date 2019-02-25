@@ -1,84 +1,194 @@
 1.数组
-1)方法
-join('/')
-pop()
-push()
-shift()
-unshift()
-reverse()
-concat()
-slice(start,end)
-sort(show)
-show(a,b){
-	return b-a //倒序
-	return a-b //正序
-}
-splice(start,end,*args)
-	args 表示替换
 
-2)检测
-arr instanceof Array
+1.1 方法
+    join('/')
+    pop()
+    push()
+    shift()
+    unshift()
+    reverse()
+    concat()
+    slice(start,end)
+    sort(show)
+    show(a,b){
+    	return b-a //倒序
+    	return a-b //正序
+    }
+    splice(start,end,*args)
+    	args 表示替换
+
+1.2 检测
+
+    arr instanceof Array
 
 2.事件对象
-1)鼠标	e.button 0 鼠标左键 1 滚轮 2右键
-onclick
-ondbclick
-onmousemove
-onmouseleave
-onmouseenter
-onmousedown
-onmouseup
 
-2)键盘	e.keyCode
-onkeydown
-onkeyup
-onkeypress
+2.1 鼠标 (e.button 0 鼠标左键 1 滚轮 2右键)
 
-3)表单事件
-onselect
-onfocus
-onblur
-onchange
-onreset
-onsubmit
+    onclick
+    ondbclick
+    onmousemove
+    onmouseleave
+    onmouseenter
+    onmousedown
+    onmouseup
 
-4)窗口事件
-onresize
-onload
+2.2 键盘	(属性 keyCode ,code)
+    
+    onkeydown
+    onkeyup
+    onkeypress
 
-5)其他事件
-onerror
-	onbort		图像加载被中断
-	onunload
-oncontextmenu 右键打开菜单
+2.3 表单事件
 
+    onselect
+    onfocus
+    onblur
+    onchange
+    onreset
+    onsubmit
 
+2.4 窗口事件
+    onresize
+    onload
 
-
-3)节点
-parentNode 
-firstChild
-lastChild
-childNodes
-
-previousSibling
-nextSibling
-
-
-parentElement
-firstElementChild
-lastElementChild
-children
-
-previousElementSibling
-nextElementSibling
+2.5 其他事件
+    onerror
+    	onbort		图像加载被中断
+    	onunload
+    oncontextmenu 右键打开菜单
 
 
 
 
+3 节点
+
+    parentNode 
+    firstChild
+    lastChild
+    childNodes
+
+    previousSibling
+    nextSibling
+
+    parentElement
+    firstElementChild
+    lastElementChild
+    children
+
+    previousElementSibling
+    nextElementSibling
 
 
+4 FILE 对象
 
+    4.1 URL (创建的临时URL ，)
+        
+        fileObj = window.URL.createObjectURL(file)
+        window.URL.revokeObjectURL(fileObj)
+
+```html
+<!-- 创建文件 -->
+<label for="">标题<input type="text" name="" id="title"></label>
+<textarea name="" id="textbox" cols="50" rows="30"></textarea>
+<button id="create">创建</button>
+<a download="info.txt" id="download" style="display: none"></a>
+<script>
+    var textFile = null
+    var makeTextFileUrl = function(text){
+        data = new Blob([text],{type:'text/plain'})
+        if(textFile){
+            window.URL.revokeObjectURL(textFile)
+        }
+        textFile = window.URL.createObjectURL(data)
+        return textFile
+    }
+    var create = document.getElementById('create')
+    var textbox = document.getElementById('textbox')
+    var title = document.getElementById('title')
+    create.addEventListener('click', function(){
+        var fileUrl = makeTextFileUrl(textbox.value)
+        var link = document.getElementById('download')
+        link.href = fileUrl
+        link.download = title.value || 'info' + '.txt'
+        link.click()
+    },false)
+</script>
+
+<!-- 预览文件   -->
+
+<input type="file" id="file" accept="image/*">
+<script>
+    var fileInput = document.querySelector('#file')
+    fileInput.addEventListener('change',e =>{
+        showImage(e.target.files[0])
+    })
+    var image = null
+    var makeImageFileUrl = function(text){
+        if(image){
+            window.URL.revokeObjectURL(image)
+        }
+        image = window.URL.createObjectURL(data)
+        return image
+    }
+
+    function showImage(file){
+        var fr = new FileReader()
+        fr.addEventListener('load', e => {
+            var img = new Image()
+            img.src = e.target.result
+            console.log(e.target.result)
+            document.body.appendChild(img)
+        })
+        fr.readAsDataURL(file)
+    }
+</script>   
+```
+
+    4.2 FileReader
+
+        var fr = new FileReader()
+        e.target.result     // 内容结果
+        fr.readAsText(file)
+        fr.readAsDataUrl(image)
+
+```html
+<!-- readAsText(file) -->
+<div id="text"></div>
+<input type="file" id="file" accept=".txt">
+<script>
+    var fileInput = document.querySelector('#file')
+    fileInput.addEventListener('change',e =>{
+        readFile(e.target.files[0])
+    })
+    function readFile(file){
+        var fr = new FileReader()
+        fr.addEventListener('load', e => {
+            document.querySelector('#text').innerHTML = '<pre>' + e.target.result + '</pre>'
+        })
+        fr.readAsText(file)
+    }
+</script>
+
+<!-- readAsDataUrl -->
+<input type="file" id="file" accept="image/*">
+<script>
+    var fileInput = document.querySelector('#file')
+    fileInput.addEventListener('change',e =>{
+        showImage(e.target.files[0])
+    })
+    function showImage(file){
+        var fr = new FileReader()
+        fr.addEventListener('load', e => {
+            var img = new Image()
+            img.src = e.target.result
+            console.log(e.target.result)
+            document.body.appendChild(img)
+        })
+        fr.readAsDataURL(file)
+    }
+</script>   
+```
 
 
 
