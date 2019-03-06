@@ -191,11 +191,49 @@
 ```
 
 
+    4.3 异步上传
+
+```js
+
+var file = e.target.files[0]
+var fd = new FormData()
+fd.append('file',file,file.name)
+var xhr = new XMLHttpRequest()
+xhr.open('POST', '[file server url]')
+xhr.send(fd)
+
+```
 
 
 
+5 ajax
+    5.1 方法
+        + open(method, url, async, username, password)
+            + method GET/POST/DELETE/HEAD/OPTIONS/PUT
+            + url 地址
+            + async 是否异步 默认异步
+        
+        + setRequestHeader(header,value)
+            + header 名称
+            + value 对应的值
+        + send(data)
+            data String/FormData
 
-
+```js
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function(callback){
+        if(xhr.readyState == 4){
+            if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+                callback(xhr.responseText)
+            }else{
+                console.error('request failed with status: ' + xhr.status)
+            }
+        }
+    }
+    xhr.open('get', 'example.com', true)
+    xhr.setRequestHeader('header-key', 'header-value')
+    xhr.send(null)
+```
 
 
 
