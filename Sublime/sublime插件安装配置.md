@@ -285,7 +285,7 @@ settings default
     管理项目
 
 ### 19.SideBarEnhancements
-```python
+```js
         //ResourceView >Theme-Default>Default.sublime-theme
            //调整为
             // Side Bar

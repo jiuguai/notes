@@ -156,6 +156,9 @@ git config --global alias.a add
     git init --bare //裸露的仓库 无工作区域
 
     git status
+    
+    打包
+    git archive master --prefix='zero/' --format=zip >zero.zip
 
 ### 远程仓库
     //生成 ssh 密钥、公钥
