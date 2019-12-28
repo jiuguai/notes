@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-
-git
-    
-    1. git add ...
-    2. git checkout
-    3. git reset
-    4. git log
-
-python 
-    测试 __setattr__
-    Super
-    __enter__
-
 ## Pandas常用工具
 
 ##### 更改索引或者列名
@@ -120,4 +106,3 @@ df_t.drop(
 
 
 
->>>>>>> adad289399981bcab30f380310490e0d045a2ed4
