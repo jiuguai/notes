@@ -152,7 +152,10 @@
         fr.readAsText(file)
         fr.readAsDataUrl(image)
 
-```html
+
+
+
+```js
 <!-- readAsText(file) -->
 <div id="text"></div>
 <input type="file" id="file" accept=".txt">

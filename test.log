@@ -1,0 +1,48 @@
+2019-11-19 17:53:17,907 - root - WARNING - logger warning 就是干
+2019-11-19 17:53:17,907 - root - ERROR - logger error 就是干
+2019-11-19 17:53:17,907 - root - CRITICAL - logger critical 就是干
+2019-11-19 18:03:19,958 - test - WARNING - logger warning 就是干
+2019-11-19 18:03:19,958 - test - ERROR - logger error 就是干
+2019-11-19 18:03:19,958 - test - CRITICAL - logger critical 就是干
+2019-11-19 18:03:50,409 - <test> - 30 - logger warning 就是干
+2019-11-19 18:03:50,409 - <test> - 40 - logger error 就是干
+2019-11-19 18:03:50,409 - <test> - 50 - logger critical 就是干
+2019-11-19 18:04:05,497<test> - 30 - logger warning 就是干
+2019-11-19 18:04:05,498<test> - 40 - logger error 就是干
+2019-11-19 18:04:05,498<test> - 50 - logger critical 就是干
+2019-11-19 18:04:18,848<test>-30 : logger warning 就是干
+2019-11-19 18:04:18,848<test>-40 : logger error 就是干
+2019-11-19 18:04:18,848<test>-50 : logger critical 就是干
+2019-11-19 18:05:48,682<test>-30 21> logger warning 就是干
+2019-11-19 18:05:48,683<test>-40 22> logger error 就是干
+2019-11-19 18:05:48,683<test>-50 23> logger critical 就是干
+2019-11-19 18:06:23,556<test>-30-21: logger warning 就是干
+2019-11-19 18:06:23,556<test>-40-22: logger error 就是干
+2019-11-19 18:06:23,556<test>-50-23: logger critical 就是干
+2019-11-19 18:06:39,170<test>-WARNING-21: logger warning 就是干
+2019-11-19 18:06:39,170<test>-ERROR-22: logger error 就是干
+2019-11-19 18:06:39,170<test>-CRITICAL-23: logger critical 就是干
+2019-11-19 18:10:45,793<test>-WARNING-21: logger warning 就是干
+2019-11-19 18:10:45,793<test>-ERROR-22: logger error 就是干
+2019-11-19 18:10:45,793<test>-CRITICAL-23: logger critical 就是干
+2019-11-19 18:12:06,241<test>-WARNING-22: logger warning 就是干
+2019-11-19 18:12:06,241<test>-ERROR-23: logger error 就是干
+2019-11-19 18:12:06,241<test>-CRITICAL-24: logger critical 就是干
+2019-11-19 18:12:56,365<test>-WARNING-22: logger warning 就是干
+2019-11-19 18:12:56,365<test>-ERROR-23: logger error 就是干
+2019-11-19 18:12:56,366<test>-CRITICAL-24: logger critical 就是干
+2019-11-19 18:14:42,244 九怪<test>-WARNING-22: logger warning 就是干
+2019-11-19 18:14:42,244 九怪<test>-ERROR-23: logger error 就是干
+2019-11-19 18:14:42,244 九怪<test>-CRITICAL-24: logger critical 就是干
+2019-11-19 18:14:47,266 九怪<test>-WARNING-22: logger warning 就是干
+2019-11-19 18:14:47,266 九怪<test>-ERROR-23: logger error 就是干
+2019-11-19 18:14:47,266 九怪<test>-CRITICAL-24: logger critical 就是干
+2019<test>-WARNING-22: logger warning 就是干
+2019<test>-ERROR-23: logger error 就是干
+2019<test>-CRITICAL-24: logger critical 就是干
+2019-11-19 18:20:14 PM<test>-WARNING-22: logger warning 就是干
+2019-11-19 18:20:14 PM<test>-ERROR-23: logger error 就是干
+2019-11-19 18:20:14 PM<test>-CRITICAL-24: logger critical 就是干
+2019-11-19 18:25:36,562<test>-WARNING-22: logger warning 就是干
+2019-11-19 18:25:36,562<test>-ERROR-23: logger error 就是干
+2019-11-19 18:25:36,562<test>-CRITICAL-24: logger critical 就是干
