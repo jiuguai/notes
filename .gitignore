@@ -2,3 +2,4 @@
 *.sublime-project
 *.sublime-workspace
 *.mp4
+/__pycache__
