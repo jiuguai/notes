@@ -9,11 +9,14 @@
 
     2. https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz
 2. 安装依赖
-    yum install zlib* openssl*
+    + 解决退格键的问题
+        yum install readline-devel.*
+    + 解决make install 问题
+        yum install zlib* openssl*
 
 3. 编译
     cd cd Python-3.6.5
-    ./configure --prefix=/usr/local/python3
+    ./configure --prefix=/usr/local/python3 --enable-optimizations
     make && make install
 
 4. 创建软链接
