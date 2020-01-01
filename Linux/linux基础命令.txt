@@ -39,7 +39,7 @@ root
 
 opt
 	给主机额外摆放的安装目录，例如Oracle 的安装 
-user
+usr
 	用户安装应用程序的目录
 	usr/bin
 		系统用户的应用程序
