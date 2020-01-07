@@ -4,6 +4,13 @@ wget http://download.redis.io/releases/redis-5.0.7.tar.gz
     tar -zxvf redis-5.0.7.tar.gz
     make 
     cd src && make install --PREFIX=/usr/local/redis
+    
+        1）vi /etc/sysctl.conf
+ 
+        2）内容添加vm.overcommit_memory = 1
+
+        3）使生效sysctl -p 
+
 
     cd /usr/local/redis/etc
     vi /usr/local/redis/etc/6379.conf
@@ -20,7 +27,7 @@ wget http://download.redis.io/releases/redis-5.0.7.tar.gz
     修改自启动脚本
     vi [解压目录]/utils/redis_init_scripts
     cp  /utisl/redis_init_scripts /etc/init.d/redis
-
+    chkconfig redisd on
 
 # 端口映射
 下载 rinetd
