@@ -22,3 +22,6 @@
 	+ vi /etc/passwd   
 		+ 找到 git:x:1000:1000::/home/git:/bin/bash
 		+ 改为 git:x:1000:1000::/home/git:/bin/git-shell
+
+6. clone
+	git clone git@47.105.186.249:jiuguai/qhj.git

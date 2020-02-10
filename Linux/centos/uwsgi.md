@@ -15,7 +15,7 @@ netstat -lnp|grep 80
 uwsgi -d --ini /srv/jiuguai/qhj/uwsgi.ini 
 nginx /etc/nginx/conf.d/qhj
 
-
+# uwsgi 配置
 [uwsgi]
 
 chdir = /srv/jiuguai/qhj
