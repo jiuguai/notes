@@ -1,5 +1,12 @@
-x = 600
+import logging
 
-y = (4542+x)/(4542+x+5088)
+logger = logging.getLogger('zero')
 
-print(f"{y}")
+fh = logging.FileHandler('t1.log', encoding='utf-8')
+ch = logging.StreamHandler()
+ch1 = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+logger.addHandler(fh)
+logger.addHandler(ch)
+logger.addHandler(ch1)
+logger.info('zero')
