@@ -3,6 +3,9 @@
 # https://digi.bib.uni-mannheim.de/tesseract/
 # 
 
+import os
+import re
+
 
 import numpy as np
 
@@ -83,14 +86,28 @@ def to_binary(img, threshold=115):
 
 
 if __name__ == '__main__':
-    file_path = r"C:\Users\zero\Desktop\pic\t.jpg"
+    file_dir = r"C:\Users\Administrator\Desktop\pic"
+    save_dir = os.path.join(file_dir,'handle')
+    com = re.compile('^\d+\.png$')
+    l = []
+    for file_name in os.listdir(file_dir):
+        m = com.match(file_name)
+        if m:
 
-    img = Image.open(file_path)
-    img = to_gray(img)
-    img = noise_remove_pil(img,4)
-    img = to_binary(img)
-    img.save("x.png")
-    pytesseract.image_to_string("x.png")
+            file_path = os.path.join(file_dir, file_name)
+            save_path = os.path.join(save_dir, file_name)
+            # print(m.group())
+
+            img = Image.open(file_path)
+            img = to_gray(img)
+            
+
+            img = noise_remove_pil(img,4)
+            img = to_binary(img)
+            img.save(save_path)
+
+    
+    # pytesseract.image_to_string("x.png")
 
     # lang 词库选择
-    pytesseract.image_to_string("x.png",lang='eng.my')
+    # pytesseract.image_to_string("x.png",lang='eng.my')
