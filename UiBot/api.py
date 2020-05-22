@@ -140,14 +140,41 @@ if __name__ =='__main__':
     AppSecret = 'f543cfbce1a246d6ba436cee7f125270' # : commander / /
     callbackUrl = 'http://192.168.137.74:1771/ShowAnyPost'
     flowCode = '0ee5621d999b11eabead0242ac120004' # ID,commander /
-    args = {'':""}
-    envName = 'test'
+    args = {'Q':"W"}
+    envName = 'task2'
     apitest = openapi(AppKey= AppKey ,AppSecret= AppSecret, url= url_commander )
-    queueName = "list4"
+
+    #  参数操作
+    paramName = 'param3'
+    # parametersetback = apitest.parameter(action='set', paramName=paramName,envName=envName, value= 'zero' )
+    # print(': {0}'.format(parametersetback))
     
-    pushback = apitest.queue(action= 'push', queueName= queueName,
-    envName= envName, content= 'jiuguai' ,delay= 0,expired= 0)
-    print(': {0}'.format(pushback))
+    parametergetback = apitest.parameter(action='get', paramName=paramName,envName=envName)
+    print(': {0}'.format(parametergetback))
+
+
+
+
+
+    # 任务操作
+    # addTaskStatus = apitest.addTaskByFlowCode(flowCode= flowCode,
+    #     args= args,
+    #     workername='Worker01',
+    #     envName='task2',
+    #     isNow= 1, callbackUrl= callbackUrl)
+
+    # print(addTaskStatus)
+
+    # queryTaskById = apitest.queryTaskStatusById(addTaskStatus['data']['taskId'])
+    # print(': {0}'.format(queryTaskById) )
+
+
+
+    # 队列操作
+    # queueName = "list4"
+    # pushback = apitest.queue(action= 'push', queueName= queueName,
+    # envName= envName, content= 'jiuguai' ,delay= 0,expired= 0)
+    # print(': {0}'.format(pushback))
     # import random
 
     # envNames = ['test','task2']
@@ -162,7 +189,7 @@ if __name__ =='__main__':
 
 
 
-    
+    #  参数操作
     # paramName = 'param3'
     # parametersetback = apitest.parameter(action='set', paramName=paramName,envName=envName, value= 'zero' )
     # print(': {0}'.format(parametersetback))
@@ -170,6 +197,8 @@ if __name__ =='__main__':
     # parametergetback = apitest.parameter(action='get', paramName=paramName,envName=envName)
     # print(': {0}'.format(parametergetback))
 
+
+    # 任务操作
     # addTaskStatus = apitest.addTaskByFlowCode(flowCode= flowCode,
     #     args= args,
     #     workername='Worker01',
@@ -180,6 +209,11 @@ if __name__ =='__main__':
 
     # queryTaskById = apitest.queryTaskStatusById(addTaskStatus['data']['taskId'])
     # print(': {0}'.format(queryTaskById) )
+
+
+
+
+
 
     # for i in range(0, 36):
     #     addTaskStatus = apitest.addTaskByFlowCode(flowCode= flowCode,

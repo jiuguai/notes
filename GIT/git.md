@@ -105,7 +105,7 @@ git push origin --delete ask
 
 
 ### 簡化操作
-+ .bash_profiel 根目录文件中添加
++ .bash_profile 根目录文件中添加
 ```bash
 alias gs="git status"
 alias gc="git commit -m"

@@ -8,11 +8,11 @@
 ### 更新源
 
 1. 先执行
-    
+   
     yum install sl -y
 
 2. 如果下载未成功
-    
+   
     yum install epel-release -y
 
     重复1步骤
@@ -28,7 +28,7 @@
         cp Centos-7.repo /etc/yum/repos.d/CentOS-Base.repo
     
     4. 使源生效
-        
+       
         yum clean all
 
         yum makecache
@@ -49,35 +49,39 @@
 ```python
     resolv.conf  # 域名生效需要修改
         nameserver 8.8.8.8
+        nameserver 114.114.114.114
+
+    systemctl restart NetworkManager
 
     cd /etc/sysconfig/network-scripts
     ifconfig | grep -P "flags|inet" 找到ens
     vi cfg-ens*
-    BOOTPROTO="static"
-    IPADDR=""  # 根据环境填
-    NETMASK="" # 根据情况填
+        BOOTPROTO="static"
+        IPADDR=""  # 根据环境填
+        NETMASK="" # 根据情况填
+        ONBOOT="yes"
 
-
+    systemctl restart network
 ```
 
 ### 安装MySQL
 
 + 源安装
     - 下载mysql 源
-        
+      
         wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
     
     - 解析源
-        
+      
         rpm -Uvh mysql80-community-release-el7-3.noarch.rpm
         或者 yum localinstall mysql80-community-release-el7-3.noarch.rpm
 
     - 查看mysql默认版本选择
-        
+      
         yum repolist all | grep mysql
 
     - 版本选择
-        
+      
         yum-config-manager --disable mysql80-community
         yum-config-manager --enable mysql57-community
         
@@ -86,15 +90,15 @@
             yum install -y yum-utils
 
     - 安装
-        
+      
         yum install mysql-community-server -y
 
     - 开启服务
-        
+      
         systemctl start mysqld.service
 
     - 服务自启
-        
+      
         systemctl enable mysqld.service
 
     - 查看密码
@@ -104,7 +108,7 @@
 - 离线安装
 
     + 直接下载MySQL安装包
-        
+      
         wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar
     
     + 使用rpm命令安装
@@ -114,35 +118,34 @@
 
 
 - 初始化密码
-    
+  
     + 查看初始密码
-     
+    
         grep 'temporary password' /var/log/mysqld.log
 
         * 倘若没有获取临时密码
             * 删除原来安装过的mysql残留的数据
                 rm -rf /var/lib/mysql
-
-            * 再启动mysql
+* 再启动mysql
                 systemctl start mysqld #启动MySQL
-
-
+        
     + 修改密码
-        
-         ALTER USER 'root'@'localhost' IDENTIFIED BY '密码大小写数字符号都要有长度不小于8';
-
+        ALTER USER 'root'@'localhost' IDENTIFIED BY '密码大小写数字符号都要有长度不小于8';
+    
     + 修改密码安全级别
-        
+      
         SHOW VARIABLES LIKE 'validate_password%';
-
+    
         set global validate_password_policy=LOW;
-
+    
     + 初始化库
         source ~/mysql/m.sql
-/root/temp/normal/uibot_commander.sql
+        
+        /root/temp/normal/uibot_commander.sql
 
-    + 配置文件
-```python
++ 配置文件
+
+```bash
         datadir=/var/lib/mysql
         socket=/var/lib/mysql/mysql.sock
         # Disabling symbolic-links is recommended to prevent assorted security risks
@@ -166,6 +169,7 @@
 
 + yum安装    
         
+  
         vi /etc/yum.repos.d/mongodb-org-4.2.repo
 
 ```python
@@ -260,7 +264,7 @@ else
 
 
 + 配置数据库
-    
+  
     use admin
     db.createUser({user:"uibot", pwd:"123456", roles:["dbAdmin"]})
 
@@ -272,9 +276,9 @@ else
 + 可选配置
 
         1）vi /etc/sysctl.conf
- 
+         
         2）内容添加vm.overcommit_memory = 1
-
+        
         3）使生效sysctl -p 
 
 + 参考日志
@@ -328,11 +332,11 @@ include /path/server-port.conf # 导入公共配置文件
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 + 安装docker
-    
+  
     yum install -y docker-ce docker-ce-cli containerd.io
 
 + 开启服务
-    
+  
     systemctl start docker
 
     systemctl enable docker
