@@ -21,7 +21,7 @@ def aq_sign(func):
 
 	return inner
 
-class CallAPI():
+class CommanderAPI():
 	def __init__(self, url,static_str, app_key, app_secret):
 		self.static_str = static_str
 		self.app_key = app_key
@@ -135,7 +135,7 @@ if __name__ == "__main__":
 	callbackUrl = 'http://192.168.137.74:1771/ShowAnyPost'
 	req_url = "http://192.168.75.130"
 
-	api = CallAPI(req_url,static_str,app_key,app_secret)
+	api = CommanderAPI(req_url,static_str,app_key,app_secret)
 	# print(api.push('list6','test',"{'T':'就是干'}"))
 	# print(api.pop('list6','test'))
 
