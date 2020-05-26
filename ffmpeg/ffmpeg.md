@@ -14,3 +14,8 @@ ffmpeg -i video.mp4 -i audio.wav \
 -c:v copy -c:a aac -strict experimental \
 -map 0:v:0 -map 1:a:0 output.mp4
 ```
+
+
++ 分离音频
+
+    ffmpeg -ss 00:00:32.50 -t 207 -i 西安悠然《我的祖国》.ts -vn 西安悠然《我的祖国》.mp3
