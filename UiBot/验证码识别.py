@@ -10,7 +10,6 @@ import re
 import numpy as np
 
 from PIL import Image
-import pytesseract
 
 
 
@@ -84,27 +83,42 @@ def to_binary(img, threshold=115):
     img_binary = img.point(table,'1')
     return img_binary
 
+def clear(img_path):
+    img = Image.open(img_path)
+    img = to_gray(img)
+    
+
+    img = noise_remove_pil(img,4)
+    img = to_binary(img)
+    img.save(img_path)
+
 
 if __name__ == '__main__':
-    file_dir = r"C:\Users\Administrator\Desktop\pic"
-    save_dir = os.path.join(file_dir,'handle')
-    com = re.compile('^\d+\.png$')
-    l = []
-    for file_name in os.listdir(file_dir):
-        m = com.match(file_name)
-        if m:
 
-            file_path = os.path.join(file_dir, file_name)
-            save_path = os.path.join(save_dir, file_name)
-            # print(m.group())
+    file_path = r"C:\Users\Administrator\AppData\Local\Temp\uibot_verification.png"
 
-            img = Image.open(file_path)
-            img = to_gray(img)
+    clear(file_path)
+
+
+    # file_dir = r"C:\Users\Administrator\Desktop\pic"
+    # save_dir = os.path.join(file_dir,'handle')
+    # com = re.compile('^\d+\.png$')
+    # l = []
+    # for file_name in os.listdir(file_dir):
+    #     m = com.match(file_name)
+    #     if m:
+
+    #         file_path = os.path.join(file_dir, file_name)
+    #         save_path = os.path.join(save_dir, file_name)
+    #         # print(m.group())
+
+    #         img = Image.open(file_path)
+    #         img = to_gray(img)
             
 
-            img = noise_remove_pil(img,4)
-            img = to_binary(img)
-            img.save(save_path)
+    #         img = noise_remove_pil(img,4)
+    #         img = to_binary(img)
+    #         img.save(save_path)
 
     
     # pytesseract.image_to_string("x.png")
