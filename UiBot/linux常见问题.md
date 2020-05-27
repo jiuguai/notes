@@ -5,4 +5,6 @@
     
     输入dhclient
 
+2. 时钟差异问题
+    ntpdate cn.pool.ntp.org
 

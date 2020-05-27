@@ -7,7 +7,7 @@ from hashlib import sha1
 
 import requests
 
-EXPIRED = 5 * 60 * 1000
+EXPIRED = 2 * 60 * 1000
 BASE_STR = ''.join([chr(i) for i in range(48,123)])
 
 def aq_sign(func):
@@ -48,7 +48,7 @@ class CommanderAPI():
 		return ''.join(random.sample(BASE_STR,32))
 
 	@aq_sign
-	def add_task(self, flow_cod, args, worker_name,env, is_now=1, call_back_url=None):
+	def add_task(self, flow_code,  worker_name,env, args={},is_now=1, call_back_url=None):
 		path = "/api/open/task/create"
 		api = self.url + path
 		data = {
@@ -60,7 +60,7 @@ class CommanderAPI():
 			"isNow":is_now
 
 		}
-
+		print(data)
 		rep = requests.post(api,params=self.params,
 				data = json.dumps(data), headers=self.headers
 			)
@@ -100,7 +100,7 @@ class CommanderAPI():
 		return rep.json()
 
 	@aq_sign
-	def push(self, name, env, content, delay=0, expired=EXPIRED):
+	def push(self, name, env,  content, delay=0, expired=EXPIRED):
 		path = "/api/open/queue/push"
 		api = self.url + path
 		data = {
@@ -137,10 +137,13 @@ if __name__ == "__main__":
 
 	api = CommanderAPI(req_url,static_str,app_key,app_secret)
 	# print(api.push('list6','test',"{'T':'就是干'}"))
-	# print(api.pop('list6','test'))
+	# 
+	# x = api.pop('list6','test')
+	# print(x)
+	# print(type(x))
 
 
-	# print(api.add_task(flow_code,{},"Worker01","task2"))
+	print(api.add_task(flow_code,"Worker01","test",{"A":1},))
 	print(api.query_task(15))
 
 
