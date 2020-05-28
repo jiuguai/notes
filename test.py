@@ -1,8 +1,13 @@
-import pandas as pd
+import os
+import re
+
+result = os.popen('rfsnu -l').read()
+print(result)
+print(type(result))
 
 
-def read_xl():
-    file_path = r"C:\Users\zero\Desktop\A.xlsx"
-    data = pd.read_excel(file_path)
-    return data
+# com = re.compile('(?<=[\[-])\d{1,3}(?:\.\d{1,3}){3}')
+com = re.compile('(?<=\[)\d{1,3}(?:\.\d{1,3}){3}')
 
+r = com.findall(result)
+print(r)
