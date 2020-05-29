@@ -3,6 +3,8 @@ import os
 
 DESKTOP_DIR = os.path.join(os.environ['USERPROFILE'],"desktop")
 
+POS_TASK_HOUR = 20
+
 if platform.node() == "zero_PC":
     MYSQL_CON_DIC = {
         "user":"root",

@@ -62,7 +62,7 @@ class InitTaskData():
 
 
         HOUR = datetime.datetime.now().hour
-        if HOUR == 10:
+        if HOUR == POS_TASK_HOUR:
             search = "="
         else:
             search = "<>"
