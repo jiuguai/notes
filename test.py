@@ -1,13 +1,6 @@
-import os
-import re
-
-result = os.popen('rfsnu -l').read()
-print(result)
-print(type(result))
+import pandas as pd
 
 
-# com = re.compile('(?<=[\[-])\d{1,3}(?:\.\d{1,3}){3}')
-com = re.compile('(?<=\[)\d{1,3}(?:\.\d{1,3}){3}')
+pd.read_excel('zsdf')
 
-r = com.findall(result)
-print(r)
+SERACH_BLOCK_MAX_COUNT
