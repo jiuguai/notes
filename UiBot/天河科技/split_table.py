@@ -51,14 +51,16 @@ def split_save_table(df, save_dir):
     for index, row in  df[1:].iterrows():
         level = temp['level']
         
-        if row['层级'] == level:
 
-            done_stack.append(temp)
-            temp = temp_stack.pop()
-
-        elif row['层级'] == level + 1:
-
+        if row['层级'] == level + 1:
             pass
+
+        elif row['层级'] <= level:
+            while True:
+                done_stack.append(temp)
+                temp = temp_stack.pop()
+                if row['层级'] == temp['level'] + 1:
+                    break
 
         elif row['层级'] > level + 1:
 
