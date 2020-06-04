@@ -65,3 +65,13 @@ For i=0 To 30
 Next
 
 ```
+
+
++ #### UIBot 锁屏配置
+
+    + 配置
+        
+        ![sss](clear_msg.jpg)
+
+
+        ![sss](clear_before_user_info.png)
