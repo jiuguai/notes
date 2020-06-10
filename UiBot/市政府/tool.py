@@ -15,7 +15,7 @@ def allow_retry(datetime_l, count, max_interval_seconds):
     temp = df["A"] - df['B']
 
     return {
-        "allow_retry":any(temp.apply(lambda x:x.total_seconds()) <=max_interval_seconds),
+        "allow_retry":any(temp.apply(lambda x:x.total_seconds()) > max_interval_seconds),
         "compare_list":datetime_l
     }
 
@@ -37,7 +37,7 @@ def allow_retry(datetime_l, count, max_interval_seconds):
     
 
     # return {
-    #     "allow_retry":any(pd.Series( seconds_l)<=60),
+    #     "allow_retry":any(pd.Series( seconds_l) > max_interval_seconds),
     #     "compare_list":datetime_l
     # }
 
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     l = ["2020-06-10 20:20:20", "2020-06-10 20:22:20", "2020-06-10 20:23:20", "2020-06-10 20:24:50"]
 
  
-    print(allow_retry(l, 2, 61))
+    print(allow_retry(l, 2, 120))
