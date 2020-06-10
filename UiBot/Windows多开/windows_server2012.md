@@ -36,7 +36,9 @@
 user = 'admin001'
 password = 'jiuguai_001'
 
-RDP.LockScreen(user,password)
+// 程序执行错误。可以在LockScreen的第三个参数输入”/log-level:trace” 运行以后会在根目录下产生uibotrdp_stdout.txt以及uibotrdp_stderror.txt中检查出错信息
+
+RDP.LockScreen(user,password,"/log-level:trace")
 sRet = Sys.GetHomePath()
 test_path = sRet & "\\desktop\\test.txt"
 
@@ -55,7 +57,9 @@ Next
 user = Asset.GetAsset("jiuguaiuser")
 password = Asset.GetAsset('jiguaiuser')
 
-RDP.LockScreen(user,password)
+// 程序执行错误。可以在LockScreen的第三个参数输入”/log-level:trace” 运行以后会在根目录下产生uibotrdp_stdout.txt以及uibotrdp_stderror.txt中检查出错信息
+
+RDP.LockScreen(user,password,"/log-level:trace")
 sRet = Sys.GetHomePath()
 test_path = sRet & "\\desktop\\test.txt"
 

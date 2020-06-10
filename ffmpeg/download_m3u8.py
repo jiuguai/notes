@@ -19,7 +19,7 @@ REDIS_MALL_ORDER_DIC = {
 
 
 
-def download_m3u8(url):
+def download_m3u8(url,file_dir):
     rc = redis.Redis(**REDIS_MALL_ORDER_DIC)
     if "m3u8:t" in rc.keys():
         rc.delete('m3u8:t')
@@ -54,13 +54,13 @@ def download_m3u8(url):
         
         print(rep.status_code)
 
-        file_dir = r"E:\test"
+        
         with open(os.path.join(file_dir,d['order']),'wb') as f:
             f.write(rep.content)
 
 
 if __name__ == "__main__":
 
-    url = "https://pl-ali.youku.com/playlist/m3u8?vid=XNDIxOTM2NzUzNg&type=flv&ups_client_netip=71f67d9a&utid=zCHQFjs6DVsCAd7wcizXMEpY&ccode=0502&psid=b7ec7a42c76734775fc792eb7e8f8f94&app_ver=2.1.4&duration=975&expire=18000&drm_type=1&drm_device=7&play_ability=5376&dyt=1&btf=&ups_ts=1590495919&onOff=0&encr=0&ups_key=afbd1d8646765017e9294465a16213f7"
-
-    download_m3u8(url)
+    url = "https://pl-ali.youku.com/playlist/m3u8?vid=XNjIwMDEyOTYw&type=mp4&ups_client_netip=71f67d9a&utid=zCHQFjs6DVsCAd7wcizXMEpY&ccode=0502&psid=95bf71e30736ee54ac1890e635c382d845cc8&app_ver=2.1.5&duration=395&expire=18000&drm_type=1&drm_device=7&play_ability=5376&dyt=1&btf=&ups_ts=1591546959&onOff=0&encr=0&ups_key=3682bac1ad803dbdfb7966d380593df5"
+    file_dir = r"E:\test"
+    download_m3u8(url,file_dir)

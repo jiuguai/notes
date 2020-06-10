@@ -22,7 +22,7 @@ def aq_sign(func):
 	return inner
 
 class CommanderAPI():
-	def __init__(self, url,static_str, app_key, app_secret):
+	def __init__(self, url, static_str, app_key, app_secret):
 		self.static_str = static_str
 		self.app_key = app_key
 		self.app_secret = app_secret

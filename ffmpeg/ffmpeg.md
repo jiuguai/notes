@@ -17,5 +17,6 @@ ffmpeg -i video.mp4 -i audio.wav \
 
 
 + 分离音频
-
-    ffmpeg -ss 00:00:32.50 -t 207 -i 西安悠然《我的祖国》.ts -vn 西安悠然《我的祖国》.mp3
+3.59
+180+32.5
+    ffmpeg -ss 00:00:26.50 -t 212.5 -i 西安悠然《我的祖国》.ts -vn 西安悠然《我的祖国》.mp3
