@@ -60,7 +60,7 @@ class CommanderAPI():
 			"isNow":is_now
 
 		}
-		print(data)
+		# print(data)
 		rep = requests.post(api,params=self.params,
 				data = json.dumps(data), headers=self.headers
 			)
@@ -129,11 +129,11 @@ class CommanderAPI():
 
 if __name__ == "__main__":
 	static_str = "afd8426953b54e23b925a63dff4bf7ed"
-	app_key = "b3e44d7b862143cca5a0f6ff136a59c5"
-	app_secret = "f543cfbce1a246d6ba436cee7f125270"
-	flow_code = "0ee5621d999b11eabead0242ac120004"
+	app_key = "b7844db63e9b48cca1c72e67769f8714"
+	app_secret = "b5f8594647aa43318e6764a3af485a6d"
+	flow_code = "cea5e4afb3a611eaa04a0242ac110002"
 	callbackUrl = 'http://192.168.137.74:1771/ShowAnyPost'
-	req_url = "http://192.168.75.130"
+	req_url = "http://test01.uibot.com.cn"
 
 	api = CommanderAPI(req_url,static_str,app_key,app_secret)
 	# print(api.push('list6','test',"{'T':'就是干'}"))
@@ -142,13 +142,13 @@ if __name__ == "__main__":
 	# print(x)
 	# print(type(x))
 
+	# task_id = api.add_task(flow_code,"test_res","test",{"A":1},)
+	# print(task_id)
+	# print(api.query_task(task_id['data']['taskId']))
 
-	print(api.add_task(flow_code,"Worker01","test",{"A":1},))
-	print(api.query_task(15))
-
-
-	# print(api.pset('param3','test', {"Z":"dota"}))
-	# print(api.pget('param3','test'))
+	# {'success': False, 'message': "The value '{'data': {'taskId': 1688}, 'code': 0, 'message': ''}' is not valid.", 'data': None}
+	print(api.pset('param3','jiuguai', {"Z":"dota"}))
+	print(api.pget('param3','test'))
 
 
 

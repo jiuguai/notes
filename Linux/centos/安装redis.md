@@ -20,6 +20,7 @@ wget http://download.redis.io/releases/redis-5.0.7.tar.gz
         logfile "/usr/local/redis/log/redis_log.log"
         pidfile /var/run/redis_6378.pid
         protected-mode no
+        save 900 10
      
 
     ps -aux | grep redis
@@ -40,11 +41,11 @@ netstat -lntup|grep6379
 开机启动
     echo rinetd >>/etc/rc.local
     
-    chmod 755 /etc/init.d/redis #设置文件redis的权限，让Linux可以执行
-    chkconfig redis on    #开启服务自启动
+    chmod 755 /etc/init.d/redisd #设置文件redisd的权限，让Linux可以执行
+    chkconfig redisd on    #开启服务自启动
     chkconfig --list      #查看所有注册的脚本文件
-    service redis start   #启动
-    service redis stop    #关闭redis
+    service redisd start   #启动
+    service redisd stop    #关闭redisd
 
 
 

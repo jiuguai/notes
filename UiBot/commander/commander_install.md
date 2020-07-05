@@ -19,7 +19,7 @@
 
 2. 如果步骤2未成功
     1. 找个目录下载
-        wget wget http://mirrors.aliyun.com/repo/Centos-7.repo
+        wget http://mirrors.aliyun.com/repo/Centos-7.repo
     
     2. 备份之前的源
         mv /etc/yum/repos.d/CentOS-Base.repo /etc/yum/repos.d/CentOS-Base.repo.bak
@@ -74,7 +74,7 @@
     - 解析源
       
         rpm -Uvh mysql80-community-release-el7-3.noarch.rpm
-        或者 yum localinstall mysql80-community-release-el7-3.noarch.rpm
+        或者 yum localinstall -y mysql80-community-release-el7-3.noarch.rpm
 
     - 查看mysql默认版本选择
       
@@ -131,7 +131,9 @@
         
     + 修改密码
         ALTER USER 'root'@'localhost' IDENTIFIED BY '密码大小写数字符号都要有长度不小于8';
-    
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'Wind_2_Zero';
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'jiuguai';
+
     + 修改密码安全级别
       
         SHOW VARIABLES LIKE 'validate_password%';
@@ -284,8 +286,9 @@ else
 + 参考日志
 
 ```python
-dir work_dir
-dbfilename path
+dir "/usr/local/redis/rdb/"
+
+logfile "/usr/local/redis/log/redis_6379.log"
 
 rdbcompression yes
 rdbchecksum yes  # 检验
