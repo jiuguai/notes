@@ -46,3 +46,5 @@
 2019-11-19 18:25:36,562<test>-WARNING-22: logger warning 就是干
 2019-11-19 18:25:36,562<test>-ERROR-23: logger error 就是干
 2019-11-19 18:25:36,562<test>-CRITICAL-24: logger critical 就是干
+logger2 debug message
+logger2 info message

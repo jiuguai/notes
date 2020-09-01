@@ -20,3 +20,16 @@ ffmpeg -i video.mp4 -i audio.wav \
 3.59
 180+32.5
     ffmpeg -ss 00:00:26.50 -t 212.5 -i 西安悠然《我的祖国》.ts -vn 西安悠然《我的祖国》.mp3
+
+
+    ffmpeg -i new.ts  -c copy new.mp4
+
+
+
+ffmpeg -ss 0:1:30 -t 0:0:20 -i input.mp4  copy output.mp4
+
+
+ffmpeg -ss 00:15:00 -t 20 -i B.mp4 -vcodec copy -acodec copy C.mp4
+
+
+ffmpeg -ss 00:00:26.50 -t 212.5 -i 西安悠然《我的祖国》.ts -vn 西安悠然《我的祖国》.mp3

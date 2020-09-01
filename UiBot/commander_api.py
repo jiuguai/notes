@@ -48,13 +48,13 @@ class CommanderAPI():
 		return ''.join(random.sample(BASE_STR,32))
 
 	@aq_sign
-	def add_task(self, flow_code,  worker_name,env, args={},is_now=1, call_back_url=None):
+	def add_task(self, flow_code,  worker_name, args={}, env=None, is_now=1, call_back_url=None):
 		path = "/api/open/task/create"
 		api = self.url + path
 		data = {
 			"flowCode" : flow_code,
 			"args":args,
-			# "callbackUrl":call_back_url,
+			"callbackUrl":call_back_url,
 			"workerName":worker_name,
 			"envName":env,
 			"isNow":is_now
@@ -115,7 +115,7 @@ class CommanderAPI():
 		return rep.json()
 
 	@aq_sign
-	def pop(self, name, env):
+	def pull(self, name, env):
 		path = "/api/open/queue/pull"
 		api = self.url + path
 		data = {
@@ -132,23 +132,23 @@ if __name__ == "__main__":
 	app_key = "b7844db63e9b48cca1c72e67769f8714"
 	app_secret = "b5f8594647aa43318e6764a3af485a6d"
 	flow_code = "cea5e4afb3a611eaa04a0242ac110002"
-	callbackUrl = 'http://192.168.137.74:1771/ShowAnyPost'
+	callbackUrl = ''
 	req_url = "http://test01.uibot.com.cn"
 
 	api = CommanderAPI(req_url,static_str,app_key,app_secret)
 	# print(api.push('list6','test',"{'T':'就是干'}"))
 	# 
-	# x = api.pop('list6','test')
+	# x = api.pull('list6','test')
 	# print(x)
 	# print(type(x))
 
-	# task_id = api.add_task(flow_code,"test_res","test",{"A":1},)
+	task_id = api.add_task(flow_code,"test_res",args={"A":1},)
 	# print(task_id)
 	# print(api.query_task(task_id['data']['taskId']))
 
 	# {'success': False, 'message': "The value '{'data': {'taskId': 1688}, 'code': 0, 'message': ''}' is not valid.", 'data': None}
-	print(api.pset('param3','jiuguai', {"Z":"dota"}))
-	print(api.pget('param3','test'))
+	# print(api.pset('param3','jiuguai', {"Z":"dota"}))
+	# print(api.pget('param3','test'))
 
 
 

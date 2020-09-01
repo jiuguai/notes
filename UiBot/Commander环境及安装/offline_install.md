@@ -5,8 +5,7 @@
 
 ## [安装包](https://pan.baidu.com/s/1ztKKs42Uq5sCI_5dTXdfvQ)
     
-> 提取码:p982
-
+> 提取码: p982
 
 ## [开放端口](https://www.cnblogs.com/Treelight/p/11101517.html)
 ```python
@@ -108,9 +107,10 @@ esac
 
 ```
 
-8. chkconfig --add redisd 
-
-9. chkconfig redisd on
+8. 
+    chkconfig --add redisd 
+    chkconfig redisd on
+9. 
 
 10. 内存分配策略
 
@@ -137,22 +137,14 @@ esac
 
 ### 安装步骤
 
-1. 下载 docker-19.03.9.tgz
+1. 网盘下载 
 
-2. tar zxvf docker-19.03.9.tgz
+    install_docker_rpm.tar
 
-3. mv docker-19.03.9 /usr/local/docker
+2. tar xvf install_docker_rpm.tar && cd ./opt/install_docker_rpm && yum install -y *.rpm
 
-4. vi /etc/profile
-```bash
+3. systemctl enable docker.service && systemctl start docker.service 
 
-# 添加
-export PATH=$PATH:/usr/local/docker
-
-```
-5. 开启服务
-    
-    dockerd &
 
 ## mogodb
 
@@ -279,9 +271,10 @@ else
 fi
 
 ```
-9. chkconfig --add mongod
-
-10. chkconfig mongod on
+9. 
+    chkconfig --add mongod
+    chkconfig mongod on
+10. 
 
 ### 注意
 
@@ -304,7 +297,7 @@ db.runCommand({logRotate:1})
     1. rpm    
         
         rpm -qa | grep mariadb
-        rpm -e -nodeps pakage
+        rpm -e --nodeps pakage
     
     2. yum
         
@@ -366,7 +359,8 @@ db.runCommand({logRotate:1})
     4. 添加启动服务
     
         cp ./support-files/mysql.server /etc/init.d/mysqld
-
+        chkconfig --add mysqld
+        chkconfig mysqld on
 
     5. 配置文件
         
@@ -378,10 +372,14 @@ db.runCommand({logRotate:1})
             
             chmod 777 my.cnf
 
+
+
     6. 查看初始化密码
 
         cat /root/.mysql_secret  
 
         set PASSWORD = PASSWORD('jiuguai');
+        
+        set PASSWORD = PASSWORD('jyjt@123');
 
-        flush privileges;
+        <!-- flush privileges; -->
