@@ -1,0 +1,19 @@
+-- schedule:
+-- 　　 AT TIMESTAMP [+ INTERVAL INTERVAL]
+-- 　　 | EVERY INTERVAL [STARTS TIMESTAMP] [ENDS TIMESTAMP]
+-- 　　
+-- 　　INTERVAL:
+-- 　　 quantity {YEAR | QUARTER | MONTH | DAY | HOUR | MINUTE |
+-- 　　 WEEK | SECOND | YEAR_MONTH | DAY_HOUR | DAY_MINUTE |
+-- 　　 DAY_SECOND | HOUR_MINUTE | HOUR_SECOND | MINUTE_SECOND}
+
+
+
+SET GLOBAL event_scheduler = ON;
+
+DROP EVENT IF EXISTS event_name;
+CREATE EVENT event_name
+ON SCHEDULE EVERY 10 second 
+DO sql_statement;
+
+
