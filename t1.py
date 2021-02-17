@@ -109,6 +109,6 @@ if __name__ == "__main__":
     # 
     # print("%+8s" %("z"))
 
-
+    print(__name__)
     a = -1
     print(f"{{  {a:+.2f} }} {{\ }} %s " %('zero') )

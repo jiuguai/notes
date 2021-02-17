@@ -33,3 +33,9 @@ ffmpeg -ss 00:15:00 -t 20 -i B.mp4 -vcodec copy -acodec copy C.mp4
 
 
 ffmpeg -ss 00:00:26.50 -t 212.5 -i 西安悠然《我的祖国》.ts -vn 西安悠然《我的祖国》.mp3
+
+
+ffmpeg -ss 00:00:46.00 -t 314.5 -i hrz.mp4 -vn hrz.mp3
+
+for %%a in (".\*.mp4") do ffmpeg -i "%%a"   -vcodec copy -acodec copy -f mpegts "D:\转换后目录\%%~na.RMVB"
+
