@@ -7,6 +7,10 @@
 
 ***
 
+### 中文支持
+
+    git config --global core.quotepath false
+
 ### 命令（常用）
 + reset
     + 参数 

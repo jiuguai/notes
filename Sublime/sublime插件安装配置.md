@@ -21,19 +21,21 @@ settings default
 
 ```python
     {
-        //"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-        "font_size": 17,
+        "close_windows_when_empty": false,
+        "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+        "font_size": 15,
         "ignored_packages":
         [
-           // "Markdown",
             "Vintage"
         ],
+        "tab_size": 4,
         "theme": "Default.sublime-theme",
         "update_check": false,
-        "word_wrap":true,
-        "auto_complete_commit_on_tab": true,
-        # "vintage_start_in_command_mode": true
+        "word_wrap": true,
+        "show_encoding": true,
+        "show_line_endings": true
     }
+
 ```
 
 ### Ctranslator
