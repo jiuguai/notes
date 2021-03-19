@@ -20,21 +20,23 @@ sudo apt-get install sublime-text-installer
 settings default
 
 ```python
-    {
-        "close_windows_when_empty": false,
-        "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-        "font_size": 15,
-        "ignored_packages":
-        [
-            "Vintage"
-        ],
-        "tab_size": 4,
-        "theme": "Default.sublime-theme",
-        "update_check": false,
-        "word_wrap": true,
-        "show_encoding": true,
-        "show_line_endings": true
-    }
+{
+    "close_windows_when_empty": false,
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+    "font_size": 15,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "theme": "Default.sublime-theme",
+    "update_check": false,
+    "word_wrap": true,
+    "show_encoding": true,
+    "show_line_endings": true
+}
+
 
 ```
 
