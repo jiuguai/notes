@@ -1,10 +1,5 @@
-import numpy as np
+import os
 
-sql = "insert into info values(%s)" %(",".join(np.repeat("%s",13)))
-print(sql)
-
-
-l = [[1],[2],[3],[4]]
+os.path.join(a, name, filename)
 
 
-print(l[1:-1])
